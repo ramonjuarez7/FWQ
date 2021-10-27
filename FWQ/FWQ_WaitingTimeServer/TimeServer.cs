@@ -4,6 +4,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace FWQ_WaitingTimeServer
 {
@@ -36,18 +37,42 @@ namespace FWQ_WaitingTimeServer
 
         }
 
+        public String Calculo(String atraccion, int numVisitantes)
+        {
+            StreamReader sr = File.OpenText("bbdd.txt");
+            String[] spliter;
+            String res;
+            int ciclo, visitantesCiclo, resultado;
+            foreach(string line in sr.ReadLine())
+            {
+                spliter = line.Split_(';');
+                if (spliter[0].Equals(atraccion))
+                {
+                    ciclo = Int32.Parse(spliter[1]);
+                    visitantesCiclo = Int32.Parse(spliter[2]);
+                    resultado = (numVisitantes / visitantesCiclo) * ciclo;
+                    res = "" + resultado;
+                }
+            }
+            sr.Close();
+            return res;
+        }
+
         public void Start()
         {
             byte[] buffer = new byte[1024];
             string mensaje;
+            int numVisitantes = 20; //Este numero lo recogerá el sensor
 
             //acepta la conexion
             s_Cliente = s_Servidor.Accept();
-
-
+        
             s_Cliente.Receive(buffer);
             mensaje = Encoding.ASCII.GetString(buffer);
-            Console.WriteLine("Se recibió el mensaje: " + mensaje);
+            String resultado =  Calculo(mensaje, numVisitantes);
+            byte[] byteMensaje = Encoding.ASCII.GetBytes(resultado);
+            Console.WriteLine("Calculado el Tiempo de Espera en atracción " + mensaje + ", enviando resultado = " + resultado);
+            s_Cliente.Send(byteMensaje);
         }
     }
 }

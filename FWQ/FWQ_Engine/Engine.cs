@@ -35,18 +35,19 @@ namespace FWQ_Engine
 
             //(para escuchar desde esa adress familia, tipo de socket q usamos, protocolo por el q envia y recibe info )
             s_ClienteTS = new Socket(ipAddrTimeServer.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            s_ClienteBroker = new Socket(ipAddrBroker.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            //s_ClienteBroker = new Socket(ipAddrBroker.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
 
 
 
         }
 
+        /*
         public void StartBrokerConexion()
         {
             s_ClienteBroker.Connect(endPointBroker);
 
-        }
+        }*/
 
         public void StartTSConexion()
         {
@@ -54,13 +55,27 @@ namespace FWQ_Engine
 
         }
 
+        public void StopTSConexion()
+        {
+            s_ClienteTS.Close();
+        }
+
         public void Send(String mensaje)
         {
-            /*
+            
             byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje);
-            s_Cliente.Send(byteMensaje);
+            s_ClienteTS.Send(byteMensaje);
             Console.WriteLine("Mensaje enviado");
-            */
+            
+        }
+
+        public int RecibirTS()
+        {
+            byte[] buffer = new byte[1024];
+            s_ClienteTS.Receive(buffer);
+            String mensaje = Encoding.ASCII.GetString(buffer);
+            int res = Int32.Parse(mensaje);
+            return int;
         }
 
     }
