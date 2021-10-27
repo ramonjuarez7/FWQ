@@ -30,7 +30,7 @@ namespace FWQ_Engine
             hostBroker = Dns.GetHostEntry(ipBroker);
             ipAddrBroker = hostBroker.AddressList[0];
             int puerto2 = Int32.Parse(puertoBroker);
-            endPointTimeServer = new IPEndPoint(ipAddrBroker, puerto2);
+            endPointBroker = new IPEndPoint(ipAddrBroker, puerto2);
 
 
             //(para escuchar desde esa adress familia, tipo de socket q usamos, protocolo por el q envia y recibe info )
@@ -65,7 +65,7 @@ namespace FWQ_Engine
             
             byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje);
             s_ClienteTS.Send(byteMensaje);
-            Console.WriteLine("Mensaje enviado");
+            Console.WriteLine("Mensaje '" + mensaje + "' enviado");
             
         }
 
@@ -74,6 +74,7 @@ namespace FWQ_Engine
             byte[] buffer = new byte[1024];
             s_ClienteTS.Receive(buffer);
             String mensaje = Encoding.ASCII.GetString(buffer);
+            Console.WriteLine(mensaje);
             int res = Int32.Parse(mensaje);
             return res;
         }

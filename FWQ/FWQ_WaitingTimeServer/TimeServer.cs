@@ -34,16 +34,17 @@ namespace FWQ_WaitingTimeServer
             //nº max de conexiones q va a tener en cola antes de rechazar
             s_Servidor.Listen(maximoPeticiones);
 
+            Console.WriteLine("Escuchando al puerto " + puertoEscucha);
 
         }
 
-        public String Calculo(String atraccion, int numVisitantes)
+        public int Calculo(String atraccion, int numVisitantes)
         {
-            StreamReader sr = File.OpenText("bbdd.txt");
+            StreamReader sr = File.OpenText("BBDD.txt");
             String[] spliter;
             String res = "";
             String line;
-            int ciclo, visitantesCiclo, resultado;
+            int ciclo, visitantesCiclo, resultado = 0;
             while((line = sr.ReadLine()) != null)
             {
                 spliter = line.Split(';');
@@ -52,11 +53,11 @@ namespace FWQ_WaitingTimeServer
                     ciclo = Int32.Parse(spliter[1]);
                     visitantesCiclo = Int32.Parse(spliter[2]);
                     resultado = (numVisitantes / visitantesCiclo) * ciclo;
-                    res = "" + resultado;
+                    //res = "" + resultado;
                 }
             }
             sr.Close();
-            return res;
+            return resultado;
         }
 
         public void Start()
@@ -70,8 +71,9 @@ namespace FWQ_WaitingTimeServer
         
             s_Cliente.Receive(buffer);
             mensaje = Encoding.ASCII.GetString(buffer);
-            String resultado =  Calculo(mensaje, numVisitantes);
-            byte[] byteMensaje = Encoding.ASCII.GetBytes(resultado);
+            int resultado =  Calculo(mensaje, numVisitantes);
+            String res = "" + resultado;
+            byte[] byteMensaje = Encoding.ASCII.GetBytes(res);
             Console.WriteLine("Calculado el Tiempo de Espera en atracción " + mensaje + ", enviando resultado = " + resultado);
             s_Cliente.Send(byteMensaje);
         }

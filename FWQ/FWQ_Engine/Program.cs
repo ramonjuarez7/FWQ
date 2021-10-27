@@ -44,26 +44,33 @@ namespace FWQ_Engine
                 ipTS = args[4];
                 puertoTS = args[5];
 
+                Console.WriteLine("Obtenidos datos necesarios.");
                 Engine engine = new Engine(ipBroker, puertoBroker, maxVisitantes, ipTS, puertoTS);
-                engine.StartTSConexion();
                 int maximoAtracciones = 5;
                 int segundosEspera = 10;
                 int[] tiemposDeEspera = new int[maximoAtracciones];
                 DateTime tiempoActual;
                 DateTime tiempoNuevo = DateTime.Now;
+                Console.WriteLine("Establecidos tiempos de actualización (" + segundosEspera + ").");
                 while (true)
                 {
                     tiempoActual = DateTime.Now;
                     TimeSpan ts = tiempoNuevo - tiempoActual;
-                    if (ts.TotalSeconds > segundosEspera) { 
+                    if (/*ts.TotalSeconds > segundosEspera*/true) {
+                        Console.WriteLine("Tiempo cumplido");
                         engine.StartTSConexion();
-                        for(int i = 1; i <= maximoAtracciones; i++)
+                        Console.WriteLine("Establecida conexión.");
+                        for (int i = 1; i <= maximoAtracciones; i++)
                         {
                             String atraccion = "" + i;
                             engine.Send(atraccion);
                             tiemposDeEspera[i-1] = engine.RecibirTS();
+                            Console.WriteLine("Recibido mensaje con valor: " + tiemposDeEspera[i - 1]);
                         }
-                        engine.StopTSConexion();
+                        tiempoNuevo = DateTime.Now;
+                    } else
+                    {
+                        //Console.WriteLine("Aún no.");
                     }
                 }
 

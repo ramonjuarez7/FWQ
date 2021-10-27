@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FWQ_Engine": {
+      "commandName": "Project",
+      "commandLineArgs": "Engine.exe localhost 9001 20 localhost 9001"
+    }
+  }
+}
