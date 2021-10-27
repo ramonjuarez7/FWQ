@@ -22,12 +22,12 @@ namespace FWQ_Engine
 
         public Engine(String ipBroker, String puertoBroker, String maximoVisitantes, String ipTimeServer, String puertoTimeServer)
         {
-            hostTimeServer = Dns.GetHostByName(ipTimeServer);
+            hostTimeServer = Dns.GetHostEntry(ipTimeServer);
             ipAddrTimeServer = hostTimeServer.AddressList[0];
             int puerto = Int32.Parse(puertoTimeServer);
             endPointTimeServer = new IPEndPoint(ipAddrTimeServer, puerto);
 
-            hostBroker = Dns.GetHostByName(ipBroker);
+            hostBroker = Dns.GetHostEntry(ipBroker);
             ipAddrBroker = hostBroker.AddressList[0];
             int puerto2 = Int32.Parse(puertoBroker);
             endPointTimeServer = new IPEndPoint(ipAddrBroker, puerto2);
@@ -75,7 +75,7 @@ namespace FWQ_Engine
             s_ClienteTS.Receive(buffer);
             String mensaje = Encoding.ASCII.GetString(buffer);
             int res = Int32.Parse(mensaje);
-            return int;
+            return res;
         }
 
     }

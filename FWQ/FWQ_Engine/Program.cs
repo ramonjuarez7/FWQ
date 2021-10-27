@@ -60,8 +60,7 @@ namespace FWQ_Engine
                         for(int i = 1; i <= maximoAtracciones; i++)
                         {
                             String atraccion = "" + i;
-                            Byte[] sent = Encoding.ASCII.GetBytes(atraccion);
-                            engine.Send(sent);
+                            engine.Send(atraccion);
                             tiemposDeEspera[i-1] = engine.RecibirTS();
                         }
                         engine.StopTSConexion();

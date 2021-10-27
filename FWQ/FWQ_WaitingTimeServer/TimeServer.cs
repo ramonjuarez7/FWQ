@@ -19,7 +19,7 @@ namespace FWQ_WaitingTimeServer
         static int maximoPeticiones = 10;
         public TimeServer(String puertoEscucha, String ipBroker, String puertoBroker)
         {
-            host = Dns.GetHostByName("localhost");
+            host = Dns.GetHostEntry("localhost");
             ipAddr = host.AddressList[0];
             int puerto = Int32.Parse(puertoEscucha);
             endPoint = new IPEndPoint(ipAddr, puerto);
@@ -41,11 +41,12 @@ namespace FWQ_WaitingTimeServer
         {
             StreamReader sr = File.OpenText("bbdd.txt");
             String[] spliter;
-            String res;
+            String res = "";
+            String line;
             int ciclo, visitantesCiclo, resultado;
-            foreach(string line in sr.ReadLine())
+            while((line = sr.ReadLine()) != null)
             {
-                spliter = line.Split_(';');
+                spliter = line.Split(';');
                 if (spliter[0].Equals(atraccion))
                 {
                     ciclo = Int32.Parse(spliter[1]);

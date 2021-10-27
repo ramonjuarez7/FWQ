@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "FWQ_WaitingTimeServer/1.0.0": {
+        "runtime": {
+          "FWQ_WaitingTimeServer.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FWQ_WaitingTimeServer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,16 @@
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\obj\Debug\net5.0\FWQ_WaitingTimeServer.csproj.AssemblyReference.cache
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\obj\Debug\net5.0\FWQ_WaitingTimeServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\obj\Debug\net5.0\FWQ_WaitingTimeServer.AssemblyInfoInputs.cache
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\obj\Debug\net5.0\FWQ_WaitingTimeServer.AssemblyInfo.cs
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\obj\Debug\net5.0\FWQ_WaitingTimeServer.csproj.CoreCompileInputs.cache
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\bin\Debug\net5.0\FWQ_WaitingTimeServer.exe
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\bin\Debug\net5.0\FWQ_WaitingTimeServer.deps.json
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\bin\Debug\net5.0\FWQ_WaitingTimeServer.runtimeconfig.json
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\bin\Debug\net5.0\FWQ_WaitingTimeServer.runtimeconfig.dev.json
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\bin\Debug\net5.0\FWQ_WaitingTimeServer.dll
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\bin\Debug\net5.0\ref\FWQ_WaitingTimeServer.dll
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\bin\Debug\net5.0\FWQ_WaitingTimeServer.pdb
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\obj\Debug\net5.0\FWQ_WaitingTimeServer.dll
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\obj\Debug\net5.0\ref\FWQ_WaitingTimeServer.dll
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\obj\Debug\net5.0\FWQ_WaitingTimeServer.pdb
+C:\Users\rjuar\Source\Repos\FWQ\FWQ\FWQ_WaitingTimeServer\obj\Debug\net5.0\FWQ_WaitingTimeServer.genruntimeconfig.cache
