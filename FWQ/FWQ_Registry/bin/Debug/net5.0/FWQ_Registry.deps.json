@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "FWQ_Registry/1.0.0": {
+        "runtime": {
+          "FWQ_Registry.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FWQ_Registry/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

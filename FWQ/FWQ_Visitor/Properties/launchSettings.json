@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FWQ_Visitor": {
+      "commandName": "Project",
+      "commandLineArgs": "FWQ_Visitor 192.168.56.18 9000 127.0.0.1. 9009"
+    }
+  }
+}

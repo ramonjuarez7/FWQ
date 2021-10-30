@@ -37,6 +37,13 @@ namespace FWQ_Registry
             Console.WriteLine("Escuchando al puerto " + puertoEscucha);
         }
 
+        static void lineChanger(string newText, string p, int lte)
+        {
+            string[] arrLine = File.ReadAllLines(p);
+            arrLine[lte - 1] = newText;
+            File.WriteAllLines(p, arrLine);
+        }
+
         public void Start()
         {
             byte[] buffer = new byte[1024];
@@ -51,23 +58,79 @@ namespace FWQ_Registry
                 mensaje = Encoding.ASCII.GetString(buffer);
                 String[] m = mensaje.Split(";");
                 //
+                String path = Path.GetFullPath("..\\..\\..\\..\\usuarios.txt");
+                StreamReader sr = File.OpenText(path);
+                String[] spliter;
+                //String res = "";
+                String line, passwd = "";
+                int lineToEdit = 0;
+                bool existe = false;
+                for(int i = 0; (line = sr.ReadLine()) != null && !existe; i++)
+                {
+                    spliter = line.Split(';');
+                    if (spliter[0].Equals(m[1]))
+                    {
+                        existe = true;
+                        lineToEdit = i;
+                        passwd = spliter[2];
+                    }
+                }
+                sr.Close();
+
+                StreamWriter sw = File.AppendText(path);
+
                 switch (m[0])
                 {
                     case "Crear perfil":
-                        
+                        if (existe)
+                        {
+                            mensaje = "El usuario ya existe!";
+                        } else
+                        {
+                            sw.WriteLine(m[1] + ";" + m[2] + ";" + m[3] + ";");
+                            mensaje = "Usuario creado con éxito.";
+
+                        }
+                        byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje);
+                        s_Cliente.Send(byteMensaje);
                         break;
 
                     case "Editar perfil":
-
+                        if (existe)
+                        {
+                            if (passwd.Equals(m[3]))
+                            {
+                                lineChanger(m[3] + ";" + m[4] + ";" + m[5] + ";", path, lineToEdit);
+                                mensaje = "Cambios realizados con éxito.";
+                            } else
+                            {
+                                mensaje = "Contraseña incorrecta.";
+                            }
+                            
+                        } else
+                        {
+                            mensaje = "El usuario no existe!";
+                        }
                         break;
 
                     case "Entrar al parque":
-
+                        if (existe)
+                        {
+                            if (passwd.Equals(m[3]))
+                            {
+                                mensaje = "Acceso concedido";
+                            }
+                            
+                        } else
+                        {
+                            mensaje = "El usuario no existe!";
+                        }
                         break;
 
                     default:
                         break;
                 }
+                sw.Close();
             }
         }
     }

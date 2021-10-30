@@ -40,9 +40,9 @@ namespace FWQ_WaitingTimeServer
 
         public int Calculo(String atraccion, int numVisitantes)
         {
-            StreamReader sr = File.OpenText("BBDD.txt");
+            StreamReader sr = File.OpenText("atracciones.txt");
             String[] spliter;
-            String res = "";
+            //String res = "";
             String line;
             int ciclo, visitantesCiclo, resultado = 0;
             while((line = sr.ReadLine()) != null)

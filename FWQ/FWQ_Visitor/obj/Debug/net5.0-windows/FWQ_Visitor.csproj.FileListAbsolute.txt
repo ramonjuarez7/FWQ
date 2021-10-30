@@ -19,3 +19,4 @@ C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Visitor\obj\Debug\net5.0-windows\FWQ_Vis
 C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Visitor\obj\Debug\net5.0-windows\ref\FWQ_Visitor.dll
 C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Visitor\obj\Debug\net5.0-windows\FWQ_Visitor.pdb
 C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Visitor\obj\Debug\net5.0-windows\FWQ_Visitor.genruntimeconfig.cache
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Visitor\obj\Debug\net5.0-windows\FWQ_Visitor.CrearPerfil - Copia.resources
