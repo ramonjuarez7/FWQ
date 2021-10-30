@@ -68,14 +68,16 @@ namespace FWQ_WaitingTimeServer
 
             //acepta la conexion
             s_Cliente = s_Servidor.Accept();
-        
-            s_Cliente.Receive(buffer);
-            mensaje = Encoding.ASCII.GetString(buffer);
-            int resultado =  Calculo(mensaje, numVisitantes);
-            String res = "" + resultado;
-            byte[] byteMensaje = Encoding.ASCII.GetBytes(res);
-            Console.WriteLine("Calculado el Tiempo de Espera en atracción " + mensaje + ", enviando resultado = " + resultado);
-            s_Cliente.Send(byteMensaje);
+            while (true)
+            {
+                s_Cliente.Receive(buffer);
+                mensaje = Encoding.ASCII.GetString(buffer);
+                int resultado = Calculo(mensaje, numVisitantes);
+                String res = "" + resultado;
+                byte[] byteMensaje = Encoding.ASCII.GetBytes(res);
+                Console.WriteLine("Calculado el Tiempo de Espera en atracción " + mensaje + ", enviando resultado = " + resultado);
+                s_Cliente.Send(byteMensaje);
+            }
         }
     }
 }

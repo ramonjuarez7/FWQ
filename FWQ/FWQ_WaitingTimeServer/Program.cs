@@ -59,7 +59,7 @@ namespace FWQ_WaitingTimeServer
 
                 TimeServer s = new TimeServer(puertoEscucha, ipBroker, puertoBroker);
                 s.Start();
-                Console.ReadKey();
+                
             } else
             {
                 Console.WriteLine("Los parámetros introducidos no son suficientes");
