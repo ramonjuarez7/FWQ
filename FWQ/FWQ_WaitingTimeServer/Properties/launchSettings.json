@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "FWQ_WaitingTimeServer": {
+      "commandName": "Project",
+      "commandLineArgs": "WaitingTimeServer.exe 9001 localhost 9000"
+    },
+    "prueba1": {
+      "commandName": "Project"
+    }
+  }
+}
