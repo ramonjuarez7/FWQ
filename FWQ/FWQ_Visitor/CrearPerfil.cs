@@ -38,7 +38,7 @@ namespace FWQ_Visitor
             visitor.StartRConexion();
             visitor.SendFullData(mensaje);
             label4.Text = visitor.RecibirR();
-
+            visitor.StopRConexion();
         }
     }
 }

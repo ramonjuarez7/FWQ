@@ -52,68 +52,66 @@ namespace FWQ_Registry
             //acepta la conexion
             s_Cliente = s_Servidor.Accept();
 
-            while (true)
-            {
-                s_Cliente.Receive(buffer);
-                mensaje = Encoding.ASCII.GetString(buffer);
-                String[] m = mensaje.Split(";");
+            s_Cliente.Receive(buffer);
+            mensaje = Encoding.ASCII.GetString(buffer);
+            String[] m = mensaje.Split(";");
                 //
-                String path = Path.GetFullPath("..\\..\\..\\..\\usuarios.txt");
-                StreamReader sr = File.OpenText(path);
-                String[] spliter;
+            String path = Path.GetFullPath("..\\..\\..\\..\\usuarios.txt");
+            StreamReader sr = File.OpenText(path);
+            String[] spliter;
                 //String res = "";
-                String line, passwd = "";
-                int lineToEdit = 0;
-                bool existe = false;
-                for(int i = 0; (line = sr.ReadLine()) != null && !existe; i++)
+            String line, passwd = "";
+            int lineToEdit = 0;
+            bool existe = false;
+            for(int i = 0; (line = sr.ReadLine()) != null && !existe; i++)
+            {
+                spliter = line.Split(';');
+                if (spliter[0].Equals(m[1]))
                 {
-                    spliter = line.Split(';');
-                    if (spliter[0].Equals(m[1]))
-                    {
                         existe = true;
                         lineToEdit = i;
                         passwd = spliter[2];
-                    }
                 }
-                sr.Close();
+            }
+            sr.Close();
 
-                StreamWriter sw = File.AppendText(path);
+            StreamWriter sw = File.AppendText(path);
 
-                switch (m[0])
-                {
-                    case "Crear perfil":
-                        if (existe)
+            switch (m[0])
+            {
+                case "Crear perfil":
+                    if (existe)
+                    {
+                        mensaje = "El usuario ya existe!";
+                    } else
+                    {
+                        sw.WriteLine(m[1] + ";" + m[2] + ";" + m[3] + ";");
+                         mensaje = "Usuario creado con exito.";
+
+                    }
+                    byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje);
+                    s_Cliente.Send(byteMensaje);
+                    break;
+
+                case "Editar perfil":
+                    if (existe)
+                    {
+                        if (passwd.Equals(m[3]))
                         {
-                            mensaje = "El usuario ya existe!";
+                        lineChanger(m[3] + ";" + m[4] + ";" + m[5] + ";", path, lineToEdit);
+                        mensaje = "Cambios realizados con éxito.";
                         } else
                         {
-                            sw.WriteLine(m[1] + ";" + m[2] + ";" + m[3] + ";");
-                            mensaje = "Usuario creado con éxito.";
-
+                            mensaje = "Contraseña incorrecta.";
                         }
-                        byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje);
-                        s_Cliente.Send(byteMensaje);
-                        break;
-
-                    case "Editar perfil":
-                        if (existe)
-                        {
-                            if (passwd.Equals(m[3]))
-                            {
-                                lineChanger(m[3] + ";" + m[4] + ";" + m[5] + ";", path, lineToEdit);
-                                mensaje = "Cambios realizados con éxito.";
-                            } else
-                            {
-                                mensaje = "Contraseña incorrecta.";
-                            }
                             
-                        } else
-                        {
-                            mensaje = "El usuario no existe!";
-                        }
-                        break;
+                    } else
+                    {
+                        mensaje = "El usuario no existe!";
+                    }
+                    break;
 
-                    case "Entrar al parque":
+               case "Entrar al parque":
                         if (existe)
                         {
                             if (passwd.Equals(m[3]))
@@ -127,11 +125,11 @@ namespace FWQ_Registry
                         }
                         break;
 
-                    default:
-                        break;
-                }
-                sw.Close();
+               default:
+                   break;
             }
+            sw.Close();
+            //s_Cliente.Close();
         }
     }
 }

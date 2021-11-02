@@ -31,6 +31,7 @@ namespace FWQ_Visitor
         public void StartRConexion()
         {
             s_ClienteR.Connect(endPointRegistry);
+            //endPointRegistry = new IPEndPoint(ipAddrRegistry, endPointRegistry.Port);
 
         }
 
@@ -41,7 +42,7 @@ namespace FWQ_Visitor
 
         public void SendFullData(String[] mensaje)
         {
-            byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje[0] + ";" + mensaje[1] + ";" + mensaje[2] + ";" + mensaje[3]);
+            byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje[0] + ";" + mensaje[1] + ";" + mensaje[2] + ";" + mensaje[3] + ";");
             s_ClienteR.Send(byteMensaje);
             Console.WriteLine("Mensaje enviado");
         }
@@ -55,7 +56,7 @@ namespace FWQ_Visitor
 
         public void SendUserPasswd(String[] mensaje)
         {
-            byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje[0] + ";" + mensaje[1] + ";" + mensaje[3]);
+            byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje[0] + ";" + mensaje[1] + ";" + mensaje[3] + ";");
             s_ClienteR.Send(byteMensaje);
             Console.WriteLine("Mensaje enviado");
         }
