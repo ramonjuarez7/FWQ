@@ -47,6 +47,13 @@ namespace FWQ_Visitor
             Console.WriteLine("Mensaje enviado");
         }
 
+        public void SendInfoForUpdate(String[] mensaje)
+        {
+            byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje[0] + ";" + mensaje[1] + ";" + mensaje[2] + ";" + mensaje[3] + ";" + mensaje[4] + ";" + mensaje[5] + ";");
+            s_ClienteR.Send(byteMensaje);
+            Console.WriteLine("Mensaje enviado");
+        }
+
         public void SendMessage(String mensaje)
         {
             byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje);

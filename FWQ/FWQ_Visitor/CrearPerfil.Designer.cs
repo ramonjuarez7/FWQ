@@ -45,6 +45,7 @@ namespace FWQ_Visitor
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(147, 27);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -52,6 +53,7 @@ namespace FWQ_Visitor
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(147, 27);
             this.textBox2.TabIndex = 1;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox3
             // 
@@ -59,6 +61,7 @@ namespace FWQ_Visitor
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(147, 27);
             this.textBox3.TabIndex = 2;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label1
             // 
@@ -69,6 +72,7 @@ namespace FWQ_Visitor
             this.label1.Size = new System.Drawing.Size(68, 31);
             this.label1.TabIndex = 3;
             this.label1.Text = "Alias:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -79,6 +83,7 @@ namespace FWQ_Visitor
             this.label2.Size = new System.Drawing.Size(103, 31);
             this.label2.TabIndex = 4;
             this.label2.Text = "Nombre:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -89,6 +94,7 @@ namespace FWQ_Visitor
             this.label3.Size = new System.Drawing.Size(134, 31);
             this.label3.TabIndex = 5;
             this.label3.Text = "Contraseña:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button1
             // 
@@ -109,6 +115,7 @@ namespace FWQ_Visitor
             this.label4.Size = new System.Drawing.Size(13, 20);
             this.label4.TabIndex = 7;
             this.label4.Text = " ";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // Form1
             // 

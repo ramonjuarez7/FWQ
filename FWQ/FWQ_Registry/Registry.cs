@@ -40,7 +40,7 @@ namespace FWQ_Registry
         static void lineChanger(string newText, string p, int lte)
         {
             string[] arrLine = File.ReadAllLines(p);
-            arrLine[lte - 1] = newText;
+            arrLine[lte] = newText;
             File.WriteAllLines(p, arrLine);
         }
 
@@ -91,24 +91,28 @@ namespace FWQ_Registry
                     }
                     byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje);
                     s_Cliente.Send(byteMensaje);
+                    sw.Close();
                     break;
 
                 case "Editar perfil":
+                    sw.Close();
                     if (existe)
                     {
-                        if (passwd.Equals(m[3]))
+                        if (passwd.Equals(m[2]))
                         {
                         lineChanger(m[3] + ";" + m[4] + ";" + m[5] + ";", path, lineToEdit);
-                        mensaje = "Cambios realizados con éxito.";
+                        mensaje = "Cambios realizados con exito.";
                         } else
                         {
-                            mensaje = "Contraseña incorrecta.";
+                            mensaje = "Password incorrecta.";
                         }
                             
                     } else
                     {
                         mensaje = "El usuario no existe!";
                     }
+                    byte[] byteMensaje1 = Encoding.ASCII.GetBytes(mensaje);
+                    s_Cliente.Send(byteMensaje1);
                     break;
 
                case "Entrar al parque":
@@ -128,7 +132,7 @@ namespace FWQ_Registry
                default:
                    break;
             }
-            sw.Close();
+            //sw.Close();
             //s_Cliente.Close();
         }
     }

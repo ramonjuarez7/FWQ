@@ -35,5 +35,11 @@ namespace FWQ_Visitor
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            EditarPerfil CambioF = new EditarPerfil(ipBroker, puertoBroker, ipRegistry, puertoRegistry);
+            CambioF.Show();
+        }
     }
 }
