@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FWQ_Registry": {
+      "commandName": "Project",
+      "commandLineArgs": "FWQ_Registry 9010"
+    }
+  }
+}

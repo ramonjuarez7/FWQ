@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using System.Diagnostics;
+using System.Threading;
 
 namespace FWQ_Engine
 {
@@ -45,33 +47,14 @@ namespace FWQ_Engine
                 puertoTS = args[5];
 
                 Console.WriteLine("Obtenidos datos necesarios.");
-                Engine engine = new Engine(ipBroker, puertoBroker, maxVisitantes, ipTS, puertoTS);
-                int maximoAtracciones = 5;
-                int segundosEspera = 10;
-                int[] tiemposDeEspera = new int[maximoAtracciones];
-                DateTime tiempoActual;
-                DateTime tiempoNuevo = DateTime.Now;
-                Console.WriteLine("Establecidos tiempos de actualización (" + segundosEspera + ").");
+                
+
+
                 while (true)
                 {
-                    tiempoActual = DateTime.Now;
-                    TimeSpan ts = tiempoNuevo - tiempoActual;
-                    if (/*ts.TotalSeconds > segundosEspera*/true) {
-                        Console.WriteLine("Tiempo cumplido");
-                        engine.StartTSConexion();
-                        Console.WriteLine("Establecida conexión.");
-                        for (int i = 1; i <= maximoAtracciones; i++)
-                        {
-                            String atraccion = "" + i;
-                            engine.Send(atraccion);
-                            tiemposDeEspera[i-1] = engine.RecibirTS();
-                            Console.WriteLine("Recibido mensaje con valor: " + tiemposDeEspera[i - 1]);
-                        }
-                        tiempoNuevo = DateTime.Now;
-                    } else
-                    {
-                        //Console.WriteLine("Aún no.");
-                    }
+                    Engine engine = new Engine(ipBroker, puertoBroker, maxVisitantes, ipTS, puertoTS);
+                    engine.StartTSConexion();
+                    Thread.Sleep(5 * 1000);
                 }
 
             } else

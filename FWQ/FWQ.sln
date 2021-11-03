@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FWQ_Engine", "FWQ_Engine\FW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FWQ_Registry", "FWQ_Registry\FWQ_Registry.csproj", "{3DE8F4E5-C186-40C2-9260-1F9A5E2421D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FWQ_Visitor", "FWQ_Visitor\FWQ_Visitor.csproj", "{CB0EB92B-2EA7-4BFA-9646-C5BCB5E24292}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FWQ_Visitor", "FWQ_Visitor\FWQ_Visitor.csproj", "{CB0EB92B-2EA7-4BFA-9646-C5BCB5E24292}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

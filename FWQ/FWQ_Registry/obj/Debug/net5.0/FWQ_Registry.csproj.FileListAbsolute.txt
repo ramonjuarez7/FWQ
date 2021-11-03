@@ -1,0 +1,16 @@
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\bin\Debug\net5.0\FWQ_Registry.exe
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\bin\Debug\net5.0\FWQ_Registry.deps.json
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\bin\Debug\net5.0\FWQ_Registry.runtimeconfig.json
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\bin\Debug\net5.0\FWQ_Registry.runtimeconfig.dev.json
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\bin\Debug\net5.0\FWQ_Registry.dll
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\bin\Debug\net5.0\ref\FWQ_Registry.dll
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\bin\Debug\net5.0\FWQ_Registry.pdb
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\obj\Debug\net5.0\FWQ_Registry.csproj.AssemblyReference.cache
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\obj\Debug\net5.0\FWQ_Registry.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\obj\Debug\net5.0\FWQ_Registry.AssemblyInfoInputs.cache
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\obj\Debug\net5.0\FWQ_Registry.AssemblyInfo.cs
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\obj\Debug\net5.0\FWQ_Registry.csproj.CoreCompileInputs.cache
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\obj\Debug\net5.0\FWQ_Registry.dll
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\obj\Debug\net5.0\ref\FWQ_Registry.dll
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\obj\Debug\net5.0\FWQ_Registry.pdb
+C:\Users\rjuar\source\repos\FWQ\FWQ\FWQ_Registry\obj\Debug\net5.0\FWQ_Registry.genruntimeconfig.cache
