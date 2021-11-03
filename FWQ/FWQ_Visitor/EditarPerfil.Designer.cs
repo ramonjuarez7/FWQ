@@ -34,14 +34,14 @@ namespace FWQ_Visitor
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.passwd2 = new System.Windows.Forms.TextBox();
+            this.name2 = new System.Windows.Forms.TextBox();
+            this.alias2 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.passwd1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.alias1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -95,26 +95,26 @@ namespace FWQ_Visitor
             this.label1.TabIndex = 11;
             this.label1.Text = "Alias:";
             // 
-            // textBox3
+            // passwd2
             // 
-            this.textBox3.Location = new System.Drawing.Point(217, 339);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(147, 27);
-            this.textBox3.TabIndex = 10;
+            this.passwd2.Location = new System.Drawing.Point(217, 339);
+            this.passwd2.Name = "passwd2";
+            this.passwd2.Size = new System.Drawing.Size(147, 27);
+            this.passwd2.TabIndex = 10;
             // 
-            // textBox2
+            // name2
             // 
-            this.textBox2.Location = new System.Drawing.Point(217, 278);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(147, 27);
-            this.textBox2.TabIndex = 9;
+            this.name2.Location = new System.Drawing.Point(217, 278);
+            this.name2.Name = "name2";
+            this.name2.Size = new System.Drawing.Size(147, 27);
+            this.name2.TabIndex = 9;
             // 
-            // textBox1
+            // alias2
             // 
-            this.textBox1.Location = new System.Drawing.Point(217, 214);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(147, 27);
-            this.textBox1.TabIndex = 8;
+            this.alias2.Location = new System.Drawing.Point(217, 214);
+            this.alias2.Name = "alias2";
+            this.alias2.Size = new System.Drawing.Size(147, 27);
+            this.alias2.TabIndex = 8;
             // 
             // label5
             // 
@@ -135,12 +135,12 @@ namespace FWQ_Visitor
             this.label6.TabIndex = 22;
             this.label6.Text = "Contraseña:";
             // 
-            // textBox4
+            // passwd1
             // 
-            this.textBox4.Location = new System.Drawing.Point(217, 119);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(147, 27);
-            this.textBox4.TabIndex = 19;
+            this.passwd1.Location = new System.Drawing.Point(217, 119);
+            this.passwd1.Name = "passwd1";
+            this.passwd1.Size = new System.Drawing.Size(147, 27);
+            this.passwd1.TabIndex = 19;
             // 
             // label8
             // 
@@ -152,12 +152,12 @@ namespace FWQ_Visitor
             this.label8.TabIndex = 20;
             this.label8.Text = "Alias:";
             // 
-            // textBox5
+            // alias1
             // 
-            this.textBox5.Location = new System.Drawing.Point(217, 55);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(147, 27);
-            this.textBox5.TabIndex = 17;
+            this.alias1.Location = new System.Drawing.Point(217, 55);
+            this.alias1.Name = "alias1";
+            this.alias1.Size = new System.Drawing.Size(147, 27);
+            this.alias1.TabIndex = 17;
             // 
             // label7
             // 
@@ -176,19 +176,19 @@ namespace FWQ_Visitor
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.passwd1);
+            this.Controls.Add(this.alias1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.passwd2);
+            this.Controls.Add(this.name2);
+            this.Controls.Add(this.alias2);
             this.Name = "EditarPerfil";
-            this.Text = "EditarPerfil";
+            this.Text = "FWQ - Editar Perfil";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,14 +201,14 @@ namespace FWQ_Visitor
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox passwd2;
+        private System.Windows.Forms.TextBox name2;
+        private System.Windows.Forms.TextBox alias2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox passwd1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox alias1;
         private System.Windows.Forms.Label label7;
     }
 }

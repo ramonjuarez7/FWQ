@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.IO;
+using System.Threading;
 
 namespace FWQ_Registry
 {
@@ -17,6 +18,8 @@ namespace FWQ_Registry
         Socket s_Servidor;
         Socket s_Cliente;
         static int maximoPeticiones = 10;
+        public static ManualResetEvent allDone = new ManualResetEvent(false);
+        static String path = Path.GetFullPath("..\\..\\..\\..\\usuarios.txt");
         public Registry(String puertoEscucha)
         {
             host = Dns.GetHostEntry("localhost");
@@ -46,53 +49,158 @@ namespace FWQ_Registry
 
         public void Start()
         {
-            byte[] buffer = new byte[1024];
-            string mensaje;
+            while (true)
+            {
+                allDone.Reset();
+                Console.WriteLine("Esperando conexión...");
+                s_Servidor.BeginAccept(new AsyncCallback(AcceptCallback), s_Servidor);
+                allDone.WaitOne();
+            }
+        }
 
-            //acepta la conexion
-            s_Cliente = s_Servidor.Accept();
+        public static void AcceptCallback(IAsyncResult ar)
+        {
+            allDone.Set();
 
-            s_Cliente.Receive(buffer);
-            mensaje = Encoding.ASCII.GetString(buffer);
-            String[] m = mensaje.Split(";");
-                //
-            String path = Path.GetFullPath("..\\..\\..\\..\\usuarios.txt");
+            // Get the socket that handles the client request.  
+            Socket listener = (Socket)ar.AsyncState;
+            Socket handler = listener.EndAccept(ar);
+
+            // Create the state object.  
+            StateObject state = new StateObject();
+            state.workSocket = handler;
+            handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
+                new AsyncCallback(ReadCallback), state);
+        }
+
+        public static void ReadCallback(IAsyncResult ar)
+        {
+            String content = String.Empty;
+
+            // Retrieve the state object and the handler socket  
+            // from the asynchronous state object.  
+            StateObject state = (StateObject)ar.AsyncState;
+            Socket handler = state.workSocket;
+
+            // Read data from the client socket.
+            int bytesRead = handler.EndReceive(ar);
+
+            if (bytesRead > 0)
+            {
+                // There  might be more data, so store the data received so far.  
+                state.sb.Append(Encoding.ASCII.GetString(
+                    state.buffer, 0, bytesRead));
+
+                // Check for end-of-file tag. If it is not there, read
+                // more data.  
+                content = state.sb.ToString();
+                String[] c = content.Split(';');
+                String mensaje = SelectOperation(c);               
+                
+                Console.WriteLine("Enviando resultados...");
+                // Echo the data back to the client.  
+                Send(handler, mensaje);
+            }
+        }
+
+        private static void Send(Socket handler, String data)
+        {
+            // Convert the string data to byte data using ASCII encoding.  
+            byte[] byteData = Encoding.ASCII.GetBytes(data);
+
+            // Begin sending the data to the remote device.  
+            handler.BeginSend(byteData, 0, byteData.Length, 0,
+                new AsyncCallback(SendCallback), handler);
+        }
+
+        private static void SendCallback(IAsyncResult ar)
+        {
+            try
+            {
+                // Retrieve the socket from the state object.  
+                Socket handler = (Socket)ar.AsyncState;
+
+                // Complete sending the data to the remote device.  
+                int bytesSent = handler.EndSend(ar);
+                Console.WriteLine("Sent {0} bytes to client.", bytesSent);
+
+                handler.Shutdown(SocketShutdown.Both);
+                handler.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+
+        public static String SelectOperation(String[] caso)
+        {
+            String mensaje = String.Empty;
+            switch (caso[0])
+            {
+                case "Crear perfil":
+                    mensaje = CrearPerfil(caso);
+                    break;
+                case "Editar perfil":
+                    mensaje = EditarPerfil(caso);
+                    break;
+                case "Iniciar sesion":
+                    mensaje = IniciarSesion(caso);
+                    break;
+                default:
+                    
+                    break;
+            }
+            return mensaje;
+        }
+
+        public static (int, String) BuscarUsuario(String alias, String path)
+        {
+            String password = String.Empty;
+            int lineToEdit = -1;
             StreamReader sr = File.OpenText(path);
             String[] spliter;
-                //String res = "";
-            String line, passwd = "";
-            int lineToEdit = 0;
+            String line;
             bool existe = false;
-            for(int i = 0; (line = sr.ReadLine()) != null && !existe; i++)
+            for (int i = 0; (line = sr.ReadLine()) != null && !existe; i++)
             {
                 spliter = line.Split(';');
-                if (spliter[0].Equals(m[1]))
+                if (spliter[0].Equals(alias))
                 {
-                        existe = true;
-                        lineToEdit = i;
-                        passwd = spliter[2];
+                    existe = true;
+                    lineToEdit = i;
+                    password = spliter[2];
                 }
             }
             sr.Close();
+            return (lineToEdit, password);
+        }
+
+        public static String CrearPerfil(String[] datos)
+        {
+            String mensaje = String.Empty, password = String.Empty;
+            int lineToEdit = 0;
+
+            (lineToEdit, password) = BuscarUsuario(datos[1], path);
 
             StreamWriter sw = File.AppendText(path);
 
-            switch (m[0])
+            if (lineToEdit != -1)
             {
-                case "Crear perfil":
-                    if (existe)
-                    {
-                        mensaje = "El usuario ya existe!";
-                    } else
-                    {
-                        sw.WriteLine(m[1] + ";" + m[2] + ";" + m[3] + ";");
-                         mensaje = "Usuario creado con exito.";
+                mensaje = "El usuario ya existe!";
+            } else
+            {
+                sw.WriteLine(datos[1] + ";" + datos[2] + ";" + datos[3] + ";");
+                mensaje = "Usuario creado con exito.";
+            }
+            sw.Close();
+            return mensaje;
 
-                    }
-                    byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje);
-                    s_Cliente.Send(byteMensaje);
-                    sw.Close();
-                    break;
+            /*
+            byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje);
+            s_Cliente.Send(byteMensaje);
+            sw.Close();
 
                 case "Editar perfil":
                     sw.Close();
@@ -133,7 +241,57 @@ namespace FWQ_Registry
                    break;
             }
             //sw.Close();
-            //s_Cliente.Close();
+            //s_Cliente.Close();*/
+        }
+
+        public static String EditarPerfil(String[] datos)
+        {
+            String mensaje = String.Empty, password = String.Empty;
+            int lineToEdit = 0;
+
+            (lineToEdit, password) = BuscarUsuario(datos[1], path);
+            if (lineToEdit != -1)
+            {
+                if (password.Equals(datos[2]))
+                {
+                    lineChanger(datos[3] + ";" + datos[4] + ";" + datos[5] + ";", path, lineToEdit);
+                    mensaje = "Cambios realizados con exito.";
+                }
+                else
+                {
+                    mensaje = "Password incorrecta.";
+                }
+
+            }
+            else
+            {
+                mensaje = "El usuario no existe!";
+            }
+            return mensaje;
+        }
+
+        public static String IniciarSesion(String[] datos)
+        {
+            String mensaje = String.Empty, password = String.Empty;
+            int lineToEdit = 0;
+
+            (lineToEdit, password) = BuscarUsuario(datos[1], path);
+            if (lineToEdit != -1)
+            {
+                if (password.Equals(datos[2]))
+                {
+                    mensaje = "Credenciales correctas.";
+                }
+                else
+                {
+                    mensaje = "Password incorrecta.";
+                }
+            }
+            else
+            {
+                mensaje = "El usuario no existe!";
+            }
+            return mensaje;
         }
     }
 }

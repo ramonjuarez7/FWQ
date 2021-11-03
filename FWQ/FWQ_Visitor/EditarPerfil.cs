@@ -29,18 +29,15 @@ namespace FWQ_Visitor
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Visitor visitor = new Visitor(ipBroker, puertoBroker, ipRegistry, puertoRegistry);
-            String[] mensaje = new string[6];
-            mensaje[0] = "Editar perfil";
-            mensaje[1] = textBox5.Text;
-            mensaje[2] = textBox4.Text;
-            mensaje[3] = textBox1.Text;
-            mensaje[4] = textBox2.Text;
-            mensaje[5] = textBox3.Text;
-            visitor.StartRConexion();
-            visitor.SendInfoForUpdate(mensaje);
-            label7.Text = visitor.RecibirR();
-            visitor.StopRConexion();
+            String llamador = "Editar perfil";           
+            String[] mensaje = new string[5]; 
+            mensaje[0] = alias1.Text;
+            mensaje[1] = passwd1.Text;
+            mensaje[2] = alias2.Text;
+            mensaje[3] = name2.Text;
+            mensaje[4] = passwd2.Text;
+            Visitor visitor = new Visitor(ipBroker, puertoBroker, ipRegistry, puertoRegistry, llamador, mensaje);      
+            label7.Text = visitor.StartRConexion();
         }
     }
 }

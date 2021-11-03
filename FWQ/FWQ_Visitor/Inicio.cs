@@ -27,7 +27,7 @@ namespace FWQ_Visitor
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1 CambioF = new Form1(ipBroker, puertoBroker, ipRegistry, puertoRegistry);
+            CrearPerfil CambioF = new CrearPerfil(ipBroker, puertoBroker, ipRegistry, puertoRegistry);
             CambioF.Show();
         }
 
@@ -39,6 +39,12 @@ namespace FWQ_Visitor
         private void button2_Click(object sender, EventArgs e)
         {
             EditarPerfil CambioF = new EditarPerfil(ipBroker, puertoBroker, ipRegistry, puertoRegistry);
+            CambioF.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            IniciarSesion CambioF = new IniciarSesion(ipBroker, puertoBroker, ipRegistry, puertoRegistry);
             CambioF.Show();
         }
     }

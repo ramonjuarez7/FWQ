@@ -1,7 +1,7 @@
 ﻿
 namespace FWQ_Visitor
 {
-    partial class Form1
+    partial class CrearPerfil
     {
         /// <summary>
         ///  Required designer variable.
@@ -131,7 +131,7 @@ namespace FWQ_Visitor
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Name = "Form1";
-            this.Text = "FWQ";
+            this.Text = "FWQ - Crear Perfil";
             this.ResumeLayout(false);
             this.PerformLayout();
 

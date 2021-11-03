@@ -4,6 +4,9 @@
     <Compile Update="EditarPerfil.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="IniciarSesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
