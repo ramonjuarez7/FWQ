@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rlDu+CWBrlvNS7PjcumYcHEPiDRWXg8DaC4fIjDJez3aFzdQQ+n8pxwLcybBrtF3XocuEhS5bVe8oJifb8rrxA==",
+  "dgSpecHash": "W5jwqr0KwGCswYYbf58ViYX71hDXR9Vj65a7UZpJr0U7584gw9LQQBsA2t95EBsaLSvl0QpRV/9Bz8ZivS3jsA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rjuar\\source\\repos\\FWQ\\FWQ\\FWQ_Registry\\FWQ_Registry.csproj",
+  "projectFilePath": "C:\\Users\\rjuar\\source\\repos\\FWQ\\FWQ\\FWQ_Sensor\\FWQ_Sensor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rjuar\\.nuget\\packages\\confluent.kafka\\1.8.2\\confluent.kafka.1.8.2.nupkg.sha512",
     "C:\\Users\\rjuar\\.nuget\\packages\\librdkafka.redist\\1.8.2\\librdkafka.redist.1.8.2.nupkg.sha512",

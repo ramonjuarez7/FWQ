@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.IO;
+using System.Threading;
 
 namespace FWQ_WaitingTimeServer
 {
@@ -58,6 +59,7 @@ namespace FWQ_WaitingTimeServer
                 puertoBroker = args[3];
 
                 TimeServer s = new TimeServer(puertoEscucha, ipBroker, puertoBroker);
+                Thread th1 = new Thread(new ThreadStart(s.StartConsumingKafka));
                 s.Start();
                 
             } else
