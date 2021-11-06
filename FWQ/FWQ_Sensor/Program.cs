@@ -28,6 +28,7 @@ namespace FWQ_Sensor
                     SaslPassword = "root"
                 };
 
+                using (var producer = new ProducerBuilder<Null, String>(config).Build());
 
                 var rand = new Random();
                 int a = Int32.Parse(idAtraccion);
