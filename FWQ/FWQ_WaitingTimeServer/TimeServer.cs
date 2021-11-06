@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.IO;
 using System.Threading;
+using Confluent.Kafka;
 
 namespace FWQ_WaitingTimeServer
 {
@@ -21,6 +22,8 @@ namespace FWQ_WaitingTimeServer
         Socket s_Cliente;
         static int maximoPeticiones = 10;
         public static ManualResetEvent allDone = new ManualResetEvent(false);
+        static ConsumerConfig config;
+        static int[] visitantesPorAtraccion = new int[5];
         
         public TimeServer(String puertoEscucha, String ipBroker, String puertoBroker)
         {
@@ -38,12 +41,27 @@ namespace FWQ_WaitingTimeServer
 
             //nº max de conexiones q va a tener en cola antes de rechazar
             s_Servidor.Listen(maximoPeticiones);
+            
+            config = new ConsumerConfig
+            {
+                BootstrapServers = ipBroker + ":" + puertoBroker,
+                SecurityProtocol = SecurityProtocol.SaslPlaintext,
+                SaslMechanism = SaslMechanism.ScramSha256,
+                SaslUsername = "root",
+                SaslPassword = "root",
+                GroupId = "my-group"
+            };
+
+            for(int i = 0; i < 5; i++)
+            {
+                visitantesPorAtraccion[i] = 5;
+            }
 
             Console.WriteLine("Escuchando al puerto " + puertoEscucha);
 
         }
 
-        public static String Calculo(int numVisitantes)
+        public static String Calculo()
         {
             StringBuilder sb = new StringBuilder();
             StreamReader sr = File.OpenText("atracciones.txt");
@@ -51,16 +69,41 @@ namespace FWQ_WaitingTimeServer
             //String res = "";
             String line;
             int ciclo, visitantesCiclo, resultado = 0;
-            while((line = sr.ReadLine()) != null)
+            for(int i = 0; (line = sr.ReadLine()) != null; i++)
             {
                 spliter = line.Split(';');                
                 ciclo = Int32.Parse(spliter[1]);
                 visitantesCiclo = Int32.Parse(spliter[2]);
-                resultado = (numVisitantes / visitantesCiclo) * ciclo;
+                resultado = (visitantesPorAtraccion[i] / visitantesCiclo) * ciclo;
                 sb.Append(spliter[0] + ";" + resultado + ";\n");
             }
             sr.Close();
             return sb.ToString();
+        }
+
+        
+        public void StartConsumingKafka()
+        {
+            using (var consumer = new ConsumerBuilder<Null, string>(config).Build())
+            {
+                consumer.Subscribe("sensores");
+                try
+                {
+                    while (true)
+                    {
+                        var consumeResult = consumer.Consume();
+                        String[] recibido = consumeResult.Message.Value.Split(":");
+                        int[] parseo = new int[2];
+                        parseo[0] = Int32.Parse(recibido[0]);
+                        parseo[1] = Int32.Parse(recibido[1]);
+                        visitantesPorAtraccion[parseo[0]-1] = parseo[1];
+                    }
+                }
+                catch (Exception)
+                {
+                    consumer.Close();
+                }
+            }
         }
 
         public void Start()
@@ -112,8 +155,7 @@ namespace FWQ_WaitingTimeServer
                 content = state.sb.ToString();
 
                 //numVisitantes será recibido por el broker
-                int numVisitantes = 10;
-                String resultado = Calculo(numVisitantes);
+                String resultado = Calculo();
                 Console.WriteLine("Enviando resultados..."); 
                 // Echo the data back to the client.  
                 Send(handler, resultado);    

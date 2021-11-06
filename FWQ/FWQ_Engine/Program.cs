@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Diagnostics;
 using System.Threading;
+using Confluent.Kafka;
 
 namespace FWQ_Engine
 {

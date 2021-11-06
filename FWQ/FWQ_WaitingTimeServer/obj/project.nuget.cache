@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ZCpM3+d6PuOu0hQLgiTOHsOawYONhvYKuO8HOiUbtCybAsanfM7rYrn1MVsdiZnffS666nrkPXlXnRLh7W5nkg==",
+  "dgSpecHash": "yPpDFllyI97oAXITM10ufR/lD6yq7ldAOvdPUQ3TA8ajwXsU/a9FVBGNRu8Z/p2e0vCBj5PIyrQkAP7uhshEaA==",
   "success": true,
   "projectFilePath": "C:\\Users\\rjuar\\source\\repos\\FWQ\\FWQ\\FWQ_WaitingTimeServer\\FWQ_WaitingTimeServer.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\rjuar\\.nuget\\packages\\confluent.kafka\\1.8.2\\confluent.kafka.1.8.2.nupkg.sha512",
+    "C:\\Users\\rjuar\\.nuget\\packages\\librdkafka.redist\\1.8.2\\librdkafka.redist.1.8.2.nupkg.sha512",
+    "C:\\Users\\rjuar\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }
