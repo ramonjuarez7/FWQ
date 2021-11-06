@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Threading;
+using Confluent.Kafka;
 
 namespace FWQ_Engine
 {
@@ -16,14 +17,16 @@ namespace FWQ_Engine
 
         private static String response = String.Empty;
 
-        IPHostEntry hostBroker;
         IPHostEntry hostTimeServer;
-        IPAddress ipAddrBroker;
         IPAddress ipAddrTimeServer;
-        IPEndPoint endPointBroker;
         IPEndPoint endPointTimeServer;
 
+        int maxVisitantes;
+        int visitantesActuales;
+
         static Socket s_ClienteTS;
+        static ProducerConfig pconfig;
+        static ConsumerConfig cconfig;
 
         static int numAtracciones = 5;
 
@@ -35,7 +38,68 @@ namespace FWQ_Engine
             endPointTimeServer = new IPEndPoint(ipAddrTimeServer, puerto);
 
             s_ClienteTS = new Socket(ipAddrTimeServer.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            maxVisitantes = Int32.Parse(maximoVisitantes);
+            visitantesActuales = 0;
 
+            pconfig = new ProducerConfig
+            {
+                BootstrapServers = ipBroker + ":" + puertoBroker,
+                SecurityProtocol = SecurityProtocol.Plaintext
+            };
+
+            cconfig = new ConsumerConfig
+            {
+                BootstrapServers = ipBroker + ":" + puertoBroker,
+                SecurityProtocol = SecurityProtocol.Plaintext,
+                GroupId = "my-group2"
+            };
+
+        }
+
+        public void EnviarAforoKafka()
+        {
+            String enviar = visitantesActuales + ":" + maxVisitantes + ":";
+            using (var producer = new ProducerBuilder<Null, string>(pconfig).Build())
+            {
+                var dr = producer.ProduceAsync("visitantes2", new Message<Null, string> { Value = enviar }).Result;
+                Console.WriteLine($"Delivered '{dr.Value}' to: {dr.TopicPartitionOffset}");
+            }       
+        }
+
+        public void SolicitudAccesoKafka()
+        {
+            using (var consumer = new ConsumerBuilder<Null, string>(cconfig).Build())
+            {
+                consumer.Subscribe("visitantes");
+                try
+                {
+                    while (true)
+                    {
+                        Console.WriteLine("Visitantes actuales: " + visitantesActuales);
+                        var consumeResult = consumer.Consume();
+                        switch(consumeResult.Message.Value){
+                            case "Acceso":
+                            this.EnviarAforoKafka();
+                                if(visitantesActuales < maxVisitantes)
+                                {
+                                    visitantesActuales++;
+                                    Console.WriteLine("Visitantes actuales: " + visitantesActuales);
+                                }
+                                break;
+                            case "Salgo":
+                                visitantesActuales--;
+                                Console.WriteLine("Visitantes actuales: " + visitantesActuales);
+                                break;
+                        }
+                        Console.WriteLine("Enviado aforo a Visitante");
+                        Console.WriteLine(consumeResult.Message.Value);
+                    }
+                }
+                catch (Exception)
+                {
+                    consumer.Close();
+                }
+            }
         }
 
         public void StartTSConexion()
@@ -187,24 +251,6 @@ namespace FWQ_Engine
                 Console.WriteLine(e.ToString());
             }
         }
-
-        /*
-        public void Send(String mensaje)
-        {           
-            byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje);
-            s_ClienteTS.Send(byteMensaje);
-            Console.WriteLine("Mensaje '" + mensaje + "' enviado");          
-        }
-
-        public int RecibirTS()
-        {
-            byte[] buffer = new byte[1024];
-            s_ClienteTS.Receive(buffer);
-            String mensaje = Encoding.ASCII.GetString(buffer);
-            Console.WriteLine(mensaje);
-            int res = Int32.Parse(mensaje);
-            return res;
-        }*/
 
     }
 }

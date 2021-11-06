@@ -59,9 +59,11 @@ namespace FWQ_WaitingTimeServer
                 puertoBroker = args[3];
 
                 TimeServer s = new TimeServer(puertoEscucha, ipBroker, puertoBroker);
-                Thread th1 = new Thread(new ThreadStart(s.StartConsumingKafka));
-                s.Start();
-                
+                Thread th1 = new Thread(s.Start);
+                th1.Start();
+                s.StartConsumingKafka();
+
+
             } else
             {
                 Console.WriteLine("Los parámetros introducidos no son suficientes");

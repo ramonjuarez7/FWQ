@@ -22,17 +22,14 @@ namespace FWQ_Sensor
                 var config = new ProducerConfig
                 {
                     BootstrapServers = ipBroker + ":" + puertoBroker,
-                    SecurityProtocol = SecurityProtocol.SaslPlaintext,
-                    SaslMechanism = SaslMechanism.ScramSha256,
-                    SaslUsername = "root",
-                    SaslPassword = "root"
+                    SecurityProtocol = SecurityProtocol.Plaintext,
                 };
 
                 using (var producer = new ProducerBuilder<Null, String>(config).Build());
 
                 var rand = new Random();
                 int a = Int32.Parse(idAtraccion);
-                int nVisitantes = rand.Next(a, (a * 10) / 3);
+                int nVisitantes = 10;
                 int counter = 0;
                 while (true)
                 {

@@ -48,12 +48,14 @@ namespace FWQ_Engine
                 puertoTS = args[5];
 
                 Console.WriteLine("Obtenidos datos necesarios.");
-                
 
+                Engine engine = new Engine(ipBroker, puertoBroker, maxVisitantes, ipTS, puertoTS);
+                Thread th1 = new Thread(engine.SolicitudAccesoKafka);
+                th1.Start();
 
                 while (true)
                 {
-                    Engine engine = new Engine(ipBroker, puertoBroker, maxVisitantes, ipTS, puertoTS);
+                    engine = new Engine(ipBroker, puertoBroker, maxVisitantes, ipTS, puertoTS);
                     engine.StartTSConexion();
                     Thread.Sleep(5 * 1000);
                 }

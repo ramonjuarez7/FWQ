@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Confluent.Kafka;
 
 namespace FWQ_Visitor
 {
@@ -23,6 +24,7 @@ namespace FWQ_Visitor
             puertoBroker = puertoB;
             ipRegistry = ipR;
             puertoRegistry = puertoR;
+
             InitializeComponent();
         }
 
@@ -44,9 +46,25 @@ namespace FWQ_Visitor
             if(label3.Text.Equals("Credenciales correctas."))
             {
                 Thread.Sleep(1 * 1000);
-                InteriorParque ip = new InteriorParque();
-                ip.Show();
+                visitor.SolicitudAccesoKafka();
+                label3.Text = "Enviada solicitud a Engine...";
+                if (visitor.RecibirAforoKafka())
+                {
+                    Thread.Sleep(1 * 1000);
+                    InteriorParque ip = new InteriorParque(ipBroker, puertoBroker, ipRegistry, puertoRegistry);
+                    ip.Show();
+                } else
+                {
+                    Thread.Sleep(2 * 1000);
+                    label3.Text = "Parque lleno.";
+                }
+                
             }
+        }
+
+        private void IniciarSesion_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

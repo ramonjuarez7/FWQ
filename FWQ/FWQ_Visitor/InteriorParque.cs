@@ -12,9 +12,30 @@ namespace FWQ_Visitor
 {
     public partial class InteriorParque : Form
     {
-        public InteriorParque()
+        String ipBroker;
+        String puertoBroker;
+        String ipRegistry;
+        String puertoRegistry;
+        public InteriorParque(string ipB, string puertoB, string ipR, string puertoR)
         {
+            ipBroker = ipB;
+            puertoBroker = puertoB;
+            ipRegistry = ipR;
+            puertoRegistry = puertoR;
             InitializeComponent();
+        }
+
+        private void InteriorParque_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InteriorParque_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            String llamador = String.Empty;
+            String[] mensaje = new String[1];
+            Visitor visitor = new Visitor(ipBroker, puertoBroker, ipRegistry, puertoRegistry, llamador, mensaje);
+            visitor.SalirParqueKafka();
         }
     }
 }

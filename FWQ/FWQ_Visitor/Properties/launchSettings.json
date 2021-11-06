@@ -2,7 +2,7 @@
   "profiles": {
     "FWQ_Visitor": {
       "commandName": "Project",
-      "commandLineArgs": "FWQ_Visitor 192.168.56.18 9000 localhost 9010"
+      "commandLineArgs": "FWQ_Visitor localhost 9092 localhost 9010"
     }
   }
 }

@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Threading;
+using Confluent.Kafka;
 
 namespace FWQ_Visitor
 {
@@ -21,6 +22,8 @@ namespace FWQ_Visitor
         IPEndPoint endPointRegistry;
         static String[] mensaje;
         static Socket s_ClienteR;
+        ProducerConfig pconfig;
+        ConsumerConfig cconfig;
 
         public Visitor(String ipBroker, String puertoBroker, String ipRegistry, String puertoRegistry, String ll, String[] m)
         {
@@ -34,7 +37,64 @@ namespace FWQ_Visitor
             //(para escuchar desde esa adress familia, tipo de socket q usamos, protocolo por el q envia y recibe info )
             s_ClienteR = new Socket(ipAddrRegistry.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             //s_ClienteBroker = new Socket(ipAddrBroker.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            pconfig = new ProducerConfig
+            {
+                BootstrapServers = ipBroker + ":" + puertoBroker,
+                SecurityProtocol = SecurityProtocol.Plaintext
+            };
+
+            cconfig = new ConsumerConfig
+            {
+                BootstrapServers = ipBroker + ":" + puertoBroker,
+                SecurityProtocol = SecurityProtocol.Plaintext,
+                GroupId = "my-group3"
+            };
         }
+
+        public bool RecibirAforoKafka()
+        {
+            bool resultado = false;
+            using (var consumer = new ConsumerBuilder<Null, string>(cconfig).Build())
+            {
+                consumer.Subscribe("visitantes2");
+                try
+                {
+                    var consumeResult = consumer.Consume();
+                    String[] recibido = consumeResult.Message.Value.Split(':');
+                    if (Int32.Parse(recibido[0]) == Int32.Parse(recibido[1]))
+                    {
+                        resultado = false;
+                    }
+                    else
+                    {
+                        resultado = true;
+                    }
+                }
+                catch (Exception)
+                {
+                    consumer.Close();
+                }
+            }
+            return resultado;
+        }
+
+        public void SolicitudAccesoKafka()
+        {
+            using (var producer = new ProducerBuilder<Null, string>(pconfig).Build())
+            {
+                var dr = producer.ProduceAsync("visitantes", new Message<Null, string> { Value = "Acceso" }).Result;
+                Console.WriteLine($"Delivered '{dr.Value}' to: {dr.TopicPartitionOffset}");
+            }
+        }
+        public void SalirParqueKafka()
+        {
+            using (var producer = new ProducerBuilder<Null, string>(pconfig).Build())
+            {
+                var dr = producer.ProduceAsync("visitantes", new Message<Null, string> { Value = "Salgo" }).Result;
+                Console.WriteLine($"Delivered '{dr.Value}' to: {dr.TopicPartitionOffset}");
+            }
+        }
+
         public static String CreaMensajeLlamada(String ll, String[] m)
         {
             StringBuilder mensaje = new StringBuilder();

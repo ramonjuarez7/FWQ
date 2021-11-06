@@ -45,10 +45,7 @@ namespace FWQ_WaitingTimeServer
             config = new ConsumerConfig
             {
                 BootstrapServers = ipBroker + ":" + puertoBroker,
-                SecurityProtocol = SecurityProtocol.SaslPlaintext,
-                SaslMechanism = SaslMechanism.ScramSha256,
-                SaslUsername = "root",
-                SaslPassword = "root",
+                SecurityProtocol = SecurityProtocol.Plaintext,
                 GroupId = "my-group"
             };
 
@@ -97,6 +94,7 @@ namespace FWQ_WaitingTimeServer
                         parseo[0] = Int32.Parse(recibido[0]);
                         parseo[1] = Int32.Parse(recibido[1]);
                         visitantesPorAtraccion[parseo[0]-1] = parseo[1];
+                        Console.WriteLine(consumeResult.Message.Value);
                     }
                 }
                 catch (Exception)
