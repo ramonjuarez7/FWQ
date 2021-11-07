@@ -40,7 +40,7 @@ namespace FWQ_Engine
             string puertoTS;
 
             if (args.Length == 6)
-            {               
+            {
                 ipBroker = args[1];
                 puertoBroker = args[2];
                 maxVisitantes = args[3];
@@ -60,11 +60,11 @@ namespace FWQ_Engine
                     Thread.Sleep(5 * 1000);
                 }
 
-            } else
+            }
+            else
             {
                 Console.WriteLine("Los parámetros introducidos deben ser 5.");
             }
-
             
 
         }

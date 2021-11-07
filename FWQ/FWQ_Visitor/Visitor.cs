@@ -25,6 +25,7 @@ namespace FWQ_Visitor
         ProducerConfig pconfig;
         ConsumerConfig cconfig;
 
+
         public Visitor(String ipBroker, String puertoBroker, String ipRegistry, String puertoRegistry, String ll, String[] m)
         {
             mensaje = m;
@@ -93,6 +94,41 @@ namespace FWQ_Visitor
                 var dr = producer.ProduceAsync("visitantes", new Message<Null, string> { Value = "Salgo" }).Result;
                 Console.WriteLine($"Delivered '{dr.Value}' to: {dr.TopicPartitionOffset}");
             }
+        }
+
+        public void SolicitarMapaKafka()
+        {
+            using (var producer = new ProducerBuilder<Null, string>(pconfig).Build())
+            {
+                //while (true)
+                //{
+                    var dr = producer.ProduceAsync("visitantes", new Message<Null, string> { Value = "Mapa" }).Result;
+                    Console.WriteLine($"Delivered '{dr.Value}' to: {dr.TopicPartitionOffset}");
+                    //RecibirMapaKafka();
+                    Thread.Sleep(1 * 1000);
+                //}
+                
+            }
+        }
+        public String RecibirMapaKafka()
+        {
+            String mapa = String.Empty;
+            using (var consumer = new ConsumerBuilder<Null, string>(cconfig).Build())
+            {
+                consumer.Subscribe("sd-events");
+                try
+                {
+                    //no consume correctamente
+                    var consumeResult = consumer.Consume();
+                    mapa = consumeResult.Message.Value;
+                    return mapa;
+                }
+                catch (Exception)
+                {
+                    consumer.Close();
+                }
+            }
+            return mapa;
         }
 
         public static String CreaMensajeLlamada(String ll, String[] m)

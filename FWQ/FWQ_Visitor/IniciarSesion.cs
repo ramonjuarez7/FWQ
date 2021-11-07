@@ -50,8 +50,10 @@ namespace FWQ_Visitor
                 label3.Text = "Enviada solicitud a Engine...";
                 if (visitor.RecibirAforoKafka())
                 {
+                    visitor.SolicitarMapaKafka();
+                    String mapa = visitor.RecibirMapaKafka();
                     Thread.Sleep(1 * 1000);
-                    InteriorParque ip = new InteriorParque(ipBroker, puertoBroker, ipRegistry, puertoRegistry);
+                    InteriorParque ip = new InteriorParque(ipBroker, puertoBroker, ipRegistry, puertoRegistry, mapa);
                     ip.Show();
                 } else
                 {
