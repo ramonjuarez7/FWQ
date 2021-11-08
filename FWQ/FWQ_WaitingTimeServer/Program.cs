@@ -61,7 +61,7 @@ namespace FWQ_WaitingTimeServer
                 TimeServer s = new TimeServer(puertoEscucha, ipBroker, puertoBroker);
                 Thread th1 = new Thread(s.Start);
                 th1.Start();
-                s.StartConsumingKafka();
+                //s.StartConsumingKafka();
 
 
             } else

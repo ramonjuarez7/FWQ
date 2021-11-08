@@ -166,7 +166,7 @@ namespace FWQ_Engine
             for(int i = 0; i < lineas.Length; i++)
             {
                 datos = lineas[i].Split(';');
-                for(int j = 0; j < mapaData.Length; j++)
+                for(int j = 0; j < numAtracciones; j++)
                 {
                     if (mapaData[j, 0].Equals(datos[0]))
                     {
@@ -263,7 +263,7 @@ namespace FWQ_Engine
                 receiveDone.WaitOne();
 
                 // Write the response to the console.  
-                //AlmacenarTiemposDeEspera(response);
+                AlmacenarTiemposDeEspera(response);
                 Console.WriteLine("Response received : \n{0}", response);
                 
 

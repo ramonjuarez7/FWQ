@@ -55,9 +55,11 @@ namespace FWQ_Engine
 
                 while (true)
                 {
+                  
                     engine = new Engine(ipBroker, puertoBroker, maxVisitantes, ipTS, puertoTS);
                     engine.StartTSConexion();
-                    Thread.Sleep(5 * 1000);
+                    Thread.Sleep(5 * 1000);               
+                    
                 }
 
             }
