@@ -153,7 +153,7 @@ namespace FWQ_Engine
             String mapaString = ConstruyeStringMapa(mapa);
             using (var producer = new ProducerBuilder<Null, string>(pconfig).Build())
             {
-                var dr = producer.ProduceAsync("sd-events", new Message<Null, string> { Value = /*mapaString*/"hola" }).Result;
+                var dr = producer.ProduceAsync("sd-events", new Message<Null, string> { Value = mapaString }).Result;
                 Console.WriteLine($"Delivered \n'{dr.Value}' to: {dr.TopicPartitionOffset}");
             }
 

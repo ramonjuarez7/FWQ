@@ -13,7 +13,6 @@ namespace FWQ_WaitingTimeServer
 
     class TimeServer
     {
-        //int numVisitantes;
         IPHostEntry host;
         IPAddress ipAddr;
         IPEndPoint endPoint;
