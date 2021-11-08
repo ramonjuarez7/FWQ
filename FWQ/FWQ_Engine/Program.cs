@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Diagnostics;
 using System.Threading;
+using Confluent.Kafka;
 
 namespace FWQ_Engine
 {
@@ -39,7 +40,7 @@ namespace FWQ_Engine
             string puertoTS;
 
             if (args.Length == 6)
-            {               
+            {
                 ipBroker = args[1];
                 puertoBroker = args[2];
                 maxVisitantes = args[3];
@@ -47,21 +48,25 @@ namespace FWQ_Engine
                 puertoTS = args[5];
 
                 Console.WriteLine("Obtenidos datos necesarios.");
-                
 
+                Engine engine = new Engine(ipBroker, puertoBroker, maxVisitantes, ipTS, puertoTS);
+                Thread th1 = new Thread(engine.SolicitudAccesoKafka);
+                th1.Start();
 
                 while (true)
                 {
-                    Engine engine = new Engine(ipBroker, puertoBroker, maxVisitantes, ipTS, puertoTS);
+                  
+                    engine = new Engine(ipBroker, puertoBroker, maxVisitantes, ipTS, puertoTS);
                     engine.StartTSConexion();
-                    Thread.Sleep(5 * 1000);
+                    Thread.Sleep(5 * 1000);               
+                    
                 }
 
-            } else
+            }
+            else
             {
                 Console.WriteLine("Los parámetros introducidos deben ser 5.");
             }
-
             
 
         }

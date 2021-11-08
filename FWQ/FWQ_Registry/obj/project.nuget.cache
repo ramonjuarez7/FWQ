@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "euf4xoaHe/ogflhIRnYqShDj539cShLkV1wUWoECyLaFdPhWe3y79zmPZ7YpPWxqSwMZZ2GVUceL3NxouYzAtw==",
+  "dgSpecHash": "rlDu+CWBrlvNS7PjcumYcHEPiDRWXg8DaC4fIjDJez3aFzdQQ+n8pxwLcybBrtF3XocuEhS5bVe8oJifb8rrxA==",
   "success": true,
   "projectFilePath": "C:\\Users\\rjuar\\source\\repos\\FWQ\\FWQ\\FWQ_Registry\\FWQ_Registry.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\rjuar\\.nuget\\packages\\confluent.kafka\\1.8.2\\confluent.kafka.1.8.2.nupkg.sha512",
+    "C:\\Users\\rjuar\\.nuget\\packages\\librdkafka.redist\\1.8.2\\librdkafka.redist.1.8.2.nupkg.sha512",
+    "C:\\Users\\rjuar\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

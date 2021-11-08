@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.IO;
+using System.Threading;
 
 namespace FWQ_WaitingTimeServer
 {
@@ -58,8 +59,11 @@ namespace FWQ_WaitingTimeServer
                 puertoBroker = args[3];
 
                 TimeServer s = new TimeServer(puertoEscucha, ipBroker, puertoBroker);
-                s.Start();
-                
+                Thread th1 = new Thread(s.Start);
+                th1.Start();
+                //s.StartConsumingKafka();
+
+
             } else
             {
                 Console.WriteLine("Los parámetros introducidos no son suficientes");

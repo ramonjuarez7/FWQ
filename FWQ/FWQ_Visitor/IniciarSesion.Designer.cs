@@ -105,6 +105,7 @@ namespace FWQ_Visitor
             this.Controls.Add(this.label1);
             this.Name = "IniciarSesion";
             this.Text = "FWQ - Iniciar Sesión";
+            this.Load += new System.EventHandler(this.IniciarSesion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

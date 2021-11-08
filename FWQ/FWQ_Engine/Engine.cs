@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Threading;
+using Confluent.Kafka;
+using System.IO;
 
 namespace FWQ_Engine
 {
@@ -16,16 +18,21 @@ namespace FWQ_Engine
 
         private static String response = String.Empty;
 
-        IPHostEntry hostBroker;
         IPHostEntry hostTimeServer;
-        IPAddress ipAddrBroker;
         IPAddress ipAddrTimeServer;
-        IPEndPoint endPointBroker;
         IPEndPoint endPointTimeServer;
 
+        int maxVisitantes;
+        int visitantesActuales;
+
         static Socket s_ClienteTS;
+        static ProducerConfig pconfig;
+        static ConsumerConfig cconfig;
+        static String path = Path.GetFullPath("..\\..\\..\\..\\mapa.txt");
 
         static int numAtracciones = 5;
+        
+        String[,] mapaData;
 
         public Engine(String ipBroker, String puertoBroker, String maximoVisitantes, String ipTimeServer, String puertoTimeServer)
         {
@@ -35,7 +42,204 @@ namespace FWQ_Engine
             endPointTimeServer = new IPEndPoint(ipAddrTimeServer, puerto);
 
             s_ClienteTS = new Socket(ipAddrTimeServer.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            maxVisitantes = Int32.Parse(maximoVisitantes);
+            visitantesActuales = 0;
 
+            pconfig = new ProducerConfig
+            {
+                BootstrapServers = ipBroker + ":" + puertoBroker,
+                SecurityProtocol = SecurityProtocol.Plaintext
+            };
+
+            cconfig = new ConsumerConfig
+            {
+                BootstrapServers = ipBroker + ":" + puertoBroker,
+                SecurityProtocol = SecurityProtocol.Plaintext,
+                GroupId = "my-group2"
+            };
+
+            StreamReader leer = new StreamReader(path);
+            mapaData = new String[numAtracciones,4];
+            String cadena;
+            for (int i = 0; (cadena = leer.ReadLine()) != null; i++)
+            {
+                for(int j = 0; j < 3; j++)
+                {
+                    mapaData[i, j] = cadena.Split(';')[j];
+                }               
+            }
+            leer.Close();
+
+        }
+
+        public void EnviarAforoKafka()
+        {
+            String enviar = visitantesActuales + ":" + maxVisitantes + ":";
+            using (var producer = new ProducerBuilder<Null, string>(pconfig).Build())
+            {
+                var dr = producer.ProduceAsync("visitantes2", new Message<Null, string> { Value = enviar }).Result;
+                Console.WriteLine($"Delivered '{dr.Value}' to: {dr.TopicPartitionOffset}");
+            }       
+        }
+
+        public String[,] ConstruirMapa()
+        {
+            String[,] mapa = {
+
+                { "# ", "# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                { "# ", ". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ",". ","#"},
+                {"# ", "# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","# ","#" }
+
+            };
+
+            int x;
+            int y;
+            String tiempo;
+
+            for (int i = 0; i < numAtracciones; i++)
+            {
+                x = Int32.Parse(mapaData[i, 1].Split(':')[0]);
+                y = Int32.Parse(mapaData[i, 1].Split(':')[1]);
+                tiempo = mapaData[i, 2];
+                if (mapa[x, y].Equals(". "))
+                {
+                    mapa[x, y] = tiempo;
+                    if(Int32.Parse(tiempo) < 10)
+                    {
+                        mapa[x, y] += " ";
+                    }
+                } 
+            }
+            return mapa;
+        }            
+        
+        public String ConstruyeStringMapa(String[,] mapa)
+        {
+            StringBuilder sb = new StringBuilder();
+            for(int i = 0; i < 22; i++)
+            {
+                for(int j = 0; j < 22; j++)
+                {
+                    sb.Append(mapa[i, j]);
+                }
+                sb.Append('\n');
+            }
+            //Console.WriteLine(sb.ToString());
+            return sb.ToString();
+        }
+
+        public void EnviarMapaKafka()
+        {
+            String[,] mapa = ConstruirMapa();
+            String mapaString = ConstruyeStringMapa(mapa);
+            using (var producer = new ProducerBuilder<Null, string>(pconfig).Build())
+            {
+                var dr = producer.ProduceAsync("sd-events", new Message<Null, string> { Value = /*mapaString*/"hola" }).Result;
+                Console.WriteLine($"Delivered \n'{dr.Value}' to: {dr.TopicPartitionOffset}");
+            }
+
+        }
+
+        public void AlmacenarTiemposDeEspera(String res)
+        {
+            String[] lineas = res.Split('\n');
+            String[] datos;
+            for(int i = 0; i < lineas.Length; i++)
+            {
+                datos = lineas[i].Split(';');
+                for(int j = 0; j < numAtracciones; j++)
+                {
+                    if (mapaData[j, 0].Equals(datos[0]))
+                    {
+                        mapaData[j, 2] = datos[1];
+                    }
+                }
+            }
+        }
+        
+        public void SolicitudParqueKafka()
+        {
+            using (var consumer = new ConsumerBuilder<Null, string>(cconfig).Build())
+            {
+                consumer.Subscribe("visitantes4");
+                try
+                {
+                    while (true)
+                    {
+                        var consumeResult = consumer.Consume();
+                        if (consumeResult.Message.Value.Equals("Mapa"))
+                        {
+                            EnviarMapaKafka();
+                        }
+                        Console.WriteLine("Enviado mapa:");
+                        Console.WriteLine(consumeResult.Message.Value);
+                    }
+                }
+                catch (Exception)
+                {
+                    consumer.Close();
+                }
+            }
+        }
+
+        public void SolicitudAccesoKafka()
+        {
+            using (var consumer = new ConsumerBuilder<Null, string>(cconfig).Build())
+            {
+                consumer.Subscribe("visitantes");
+                try
+                {
+                    while (true)
+                    {
+                        Console.WriteLine("Visitantes actuales: " + visitantesActuales);
+                        var consumeResult = consumer.Consume();
+                        switch(consumeResult.Message.Value){
+                            case "Acceso":
+                            this.EnviarAforoKafka();
+                                if(visitantesActuales < maxVisitantes)
+                                {
+                                    visitantesActuales++;
+                                    Console.WriteLine("Visitantes actuales: " + visitantesActuales);
+                                }
+                                break;
+                            case "Salgo":
+                                visitantesActuales--;
+                                Console.WriteLine("Visitantes actuales: " + visitantesActuales);
+                                break;
+                            case "Mapa":
+                                EnviarMapaKafka();
+                                break;
+                            default:
+                                break;
+                        }
+                        Console.WriteLine("Enviados visitantes actuales:");
+                        Console.WriteLine(consumeResult.Message.Value);
+                    }
+                }
+                catch (Exception)
+                {
+                    consumer.Close();
+                }
+            }
         }
 
         public void StartTSConexion()
@@ -59,6 +263,7 @@ namespace FWQ_Engine
                 receiveDone.WaitOne();
 
                 // Write the response to the console.  
+                AlmacenarTiemposDeEspera(response);
                 Console.WriteLine("Response received : \n{0}", response);
                 
 
@@ -187,24 +392,6 @@ namespace FWQ_Engine
                 Console.WriteLine(e.ToString());
             }
         }
-
-        /*
-        public void Send(String mensaje)
-        {           
-            byte[] byteMensaje = Encoding.ASCII.GetBytes(mensaje);
-            s_ClienteTS.Send(byteMensaje);
-            Console.WriteLine("Mensaje '" + mensaje + "' enviado");          
-        }
-
-        public int RecibirTS()
-        {
-            byte[] buffer = new byte[1024];
-            s_ClienteTS.Receive(buffer);
-            String mensaje = Encoding.ASCII.GetString(buffer);
-            Console.WriteLine(mensaje);
-            int res = Int32.Parse(mensaje);
-            return res;
-        }*/
 
     }
 }

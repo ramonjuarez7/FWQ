@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FWQ_Sensor": {
+      "commandName": "Project",
+      "commandLineArgs": "FWQ_Sensor localhost 9092 1"
+    }
+  }
+}
