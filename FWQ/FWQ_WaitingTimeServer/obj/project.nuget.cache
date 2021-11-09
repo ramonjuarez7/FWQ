@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yPpDFllyI97oAXITM10ufR/lD6yq7ldAOvdPUQ3TA8ajwXsU/a9FVBGNRu8Z/p2e0vCBj5PIyrQkAP7uhshEaA==",
+  "dgSpecHash": "27ZUY/WHxgE7F78dJKxhtVG1SoC6KUtUe6WrjQ8F+f4wl3xoqnHPpvOmFS2lRMCQrGeHxjtgQL7aRz9x5cndrQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rjuar\\source\\repos\\FWQ\\FWQ\\FWQ_WaitingTimeServer\\FWQ_WaitingTimeServer.csproj",
+  "projectFilePath": "C:\\Users\\rjuar\\Desktop\\Compartida Windows Server\\FWQ\\FWQ\\FWQ_WaitingTimeServer\\FWQ_WaitingTimeServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rjuar\\.nuget\\packages\\confluent.kafka\\1.8.2\\confluent.kafka.1.8.2.nupkg.sha512",
     "C:\\Users\\rjuar\\.nuget\\packages\\librdkafka.redist\\1.8.2\\librdkafka.redist.1.8.2.nupkg.sha512",

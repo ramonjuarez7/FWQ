@@ -26,14 +26,14 @@ namespace FWQ_WaitingTimeServer
         
         public TimeServer(String puertoEscucha, String ipBroker, String puertoBroker)
         {
-            host = Dns.GetHostEntry("localhost");
-            ipAddr = host.AddressList[0];
+            //host = Dns.GetHostEntry("localhost");
+            //ipAddr = host.AddressList[0];
             int puerto = Int32.Parse(puertoEscucha);
-            endPoint = new IPEndPoint(ipAddr, puerto);
+            endPoint = new IPEndPoint(IPAddress.Any, puerto);
 
 
             //(para escuchar desde esa adress familia, tipo de socket q usamos, protocolo por el q envia y recibe info )
-            s_Servidor = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            s_Servidor = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
             //desde donde va a escuchar
             s_Servidor.Bind(endPoint);

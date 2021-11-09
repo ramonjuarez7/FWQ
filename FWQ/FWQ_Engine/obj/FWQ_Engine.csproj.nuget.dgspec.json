@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rjuar\\source\\repos\\FWQ\\FWQ\\FWQ_Engine\\FWQ_Engine.csproj": {}
+    "C:\\Users\\rjuar\\Desktop\\Compartida Windows Server\\FWQ\\FWQ\\FWQ_Engine\\FWQ_Engine.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rjuar\\source\\repos\\FWQ\\FWQ\\FWQ_Engine\\FWQ_Engine.csproj": {
+    "C:\\Users\\rjuar\\Desktop\\Compartida Windows Server\\FWQ\\FWQ\\FWQ_Engine\\FWQ_Engine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rjuar\\source\\repos\\FWQ\\FWQ\\FWQ_Engine\\FWQ_Engine.csproj",
+        "projectUniqueName": "C:\\Users\\rjuar\\Desktop\\Compartida Windows Server\\FWQ\\FWQ\\FWQ_Engine\\FWQ_Engine.csproj",
         "projectName": "FWQ_Engine",
-        "projectPath": "C:\\Users\\rjuar\\source\\repos\\FWQ\\FWQ\\FWQ_Engine\\FWQ_Engine.csproj",
+        "projectPath": "C:\\Users\\rjuar\\Desktop\\Compartida Windows Server\\FWQ\\FWQ\\FWQ_Engine\\FWQ_Engine.csproj",
         "packagesPath": "C:\\Users\\rjuar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rjuar\\source\\repos\\FWQ\\FWQ\\FWQ_Engine\\obj\\",
+        "outputPath": "C:\\Users\\rjuar\\Desktop\\Compartida Windows Server\\FWQ\\FWQ\\FWQ_Engine\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

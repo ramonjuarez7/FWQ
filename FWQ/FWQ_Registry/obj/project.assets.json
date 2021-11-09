@@ -241,11 +241,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rjuar\\source\\repos\\FWQ\\FWQ\\FWQ_Registry\\FWQ_Registry.csproj",
+      "projectUniqueName": "C:\\Users\\rjuar\\Desktop\\Compartida Windows Server\\FWQ\\FWQ\\FWQ_Registry\\FWQ_Registry.csproj",
       "projectName": "FWQ_Registry",
-      "projectPath": "C:\\Users\\rjuar\\source\\repos\\FWQ\\FWQ\\FWQ_Registry\\FWQ_Registry.csproj",
+      "projectPath": "C:\\Users\\rjuar\\Desktop\\Compartida Windows Server\\FWQ\\FWQ\\FWQ_Registry\\FWQ_Registry.csproj",
       "packagesPath": "C:\\Users\\rjuar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rjuar\\source\\repos\\FWQ\\FWQ\\FWQ_Registry\\obj\\",
+      "outputPath": "C:\\Users\\rjuar\\Desktop\\Compartida Windows Server\\FWQ\\FWQ\\FWQ_Registry\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
