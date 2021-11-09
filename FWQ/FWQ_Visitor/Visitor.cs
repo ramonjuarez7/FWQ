@@ -6,6 +6,8 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Threading;
 using Confluent.Kafka;
+using Microsoft;
+using Microsoft.AspNetCore.Hosting;
 
 namespace FWQ_Visitor
 {
@@ -30,13 +32,13 @@ namespace FWQ_Visitor
         {
             mensaje = m;
             llamador = ll;
-            hostRegistry = Dns.GetHostEntry(ipRegistry);
-            ipAddrRegistry = hostRegistry.AddressList[0];
+            //hostRegistry = Dns.GetHostEntry(ipRegistry);
+            //ipAddrRegistry = hostRegistry.AddressList[0];
             int puerto = Int32.Parse(puertoRegistry);
-            endPointRegistry = new IPEndPoint(ipAddrRegistry, puerto);
+            endPointRegistry = new IPEndPoint(IPAddress.Parse(ipRegistry), puerto);
 
             //(para escuchar desde esa adress familia, tipo de socket q usamos, protocolo por el q envia y recibe info )
-            s_ClienteR = new Socket(ipAddrRegistry.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            s_ClienteR = new Socket(endPointRegistry.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             //s_ClienteBroker = new Socket(ipAddrBroker.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             pconfig = new ProducerConfig
             {

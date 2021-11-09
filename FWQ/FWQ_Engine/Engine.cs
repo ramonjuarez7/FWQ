@@ -36,12 +36,12 @@ namespace FWQ_Engine
 
         public Engine(String ipBroker, String puertoBroker, String maximoVisitantes, String ipTimeServer, String puertoTimeServer)
         {
-            hostTimeServer = Dns.GetHostEntry(ipTimeServer);
-            ipAddrTimeServer = hostTimeServer.AddressList[0];
+            //hostTimeServer = Dns.GetHostEntry(ipTimeServer);
+            //ipAddrTimeServer = hostTimeServer.AddressList[0];
             int puerto = Int32.Parse(puertoTimeServer);
-            endPointTimeServer = new IPEndPoint(ipAddrTimeServer, puerto);
+            endPointTimeServer = new IPEndPoint(IPAddress.Parse(ipTimeServer), puerto);
 
-            s_ClienteTS = new Socket(ipAddrTimeServer.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            s_ClienteTS = new Socket(endPointTimeServer.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             maxVisitantes = Int32.Parse(maximoVisitantes);
             visitantesActuales = 0;
 
