@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rjuar\\Desktop\\Compartida Windows Server\\FWQ\\FWQ\\FWQ_WaitingTimeServer\\FWQ_WaitingTimeServer.csproj": {}
+    "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_WaitingTimeServer\\FWQ_WaitingTimeServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rjuar\\Desktop\\Compartida Windows Server\\FWQ\\FWQ\\FWQ_WaitingTimeServer\\FWQ_WaitingTimeServer.csproj": {
+    "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_WaitingTimeServer\\FWQ_WaitingTimeServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rjuar\\Desktop\\Compartida Windows Server\\FWQ\\FWQ\\FWQ_WaitingTimeServer\\FWQ_WaitingTimeServer.csproj",
+        "projectUniqueName": "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_WaitingTimeServer\\FWQ_WaitingTimeServer.csproj",
         "projectName": "FWQ_WaitingTimeServer",
-        "projectPath": "C:\\Users\\rjuar\\Desktop\\Compartida Windows Server\\FWQ\\FWQ\\FWQ_WaitingTimeServer\\FWQ_WaitingTimeServer.csproj",
+        "projectPath": "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_WaitingTimeServer\\FWQ_WaitingTimeServer.csproj",
         "packagesPath": "C:\\Users\\rjuar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rjuar\\Desktop\\Compartida Windows Server\\FWQ\\FWQ\\FWQ_WaitingTimeServer\\obj\\",
+        "outputPath": "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_WaitingTimeServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
