@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KC1kV2r2ddX+exnBoCZKZ0Z4Zbyu/cQtdkfUj7HpA7l1wKQPyr7NgYs0uKornpTTnB5i67gcwNTsH6o//Qyzlw==",
+  "dgSpecHash": "cMy/utN7dmPvH2UYKkdwP8pG1voTvUQ7som7wmHiJoMpZxGBo0Zi6yAoXFNUJ9E9OSW30nmINHe5bf6x3PRvMw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rjuar\\source\\repos\\ramonjuarez7\\FWQ\\FWQ\\API_Engine_Front\\API_Engine_Front.csproj",
+  "projectFilePath": "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\API_Engine_Front\\API_Engine_Front.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rjuar\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.11.1\\microsoft.visualstudio.azure.containers.tools.targets.1.11.1.nupkg.sha512"
   ],
