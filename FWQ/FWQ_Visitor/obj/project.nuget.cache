@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pK6Z5L+tH3axTYTeBVzNOHM3nBZpaH/HBN0dP4U0Oln5WYzlj4cLQwqX1sMkzkG8q1q1GbMhq6LWTDieg7Y2Iw==",
+  "dgSpecHash": "R4G4VpsxqNYwqDH/CfSPp4CUtExoPRkW6Z/63AFckUrI78AFL5RLgpVu+mCvQOAMWj3kZRgPorjIb58rs8O5Ag==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rjuar\\Desktop\\Compartida Windows Server\\FWQ\\FWQ\\FWQ_Visitor\\FWQ_Visitor.csproj",
+  "projectFilePath": "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_Visitor\\FWQ_Visitor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rjuar\\.nuget\\packages\\confluent.kafka\\1.8.2\\confluent.kafka.1.8.2.nupkg.sha512",
     "C:\\Users\\rjuar\\.nuget\\packages\\librdkafka.redist\\1.8.2\\librdkafka.redist.1.8.2.nupkg.sha512",
