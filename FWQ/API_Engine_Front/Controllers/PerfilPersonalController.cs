@@ -14,7 +14,6 @@ namespace API_Engine1.Controllers
     public class PerfilPersonalController : ControllerBase
     {
         static String[] usuarios = new String[1000];
-        static String mappath = Path.GetFullPath("..\\mapa.txt");
         static String userpath = Path.GetFullPath("..\\usuarios.txt");
 
         public static (int, String) BuscarUsuario(String alias)
@@ -43,6 +42,11 @@ namespace API_Engine1.Controllers
         {
             StreamReader sr = System.IO.File.OpenText(userpath);
             String line;
+            for (int i = 0; i < usuarios.Length; i++)
+            {
+                usuarios[i] = "";
+            }
+
             for (int i = 0; (line = sr.ReadLine()) != null; i++)
             {
                 usuarios[i] = line;
@@ -72,9 +76,28 @@ namespace API_Engine1.Controllers
         public string Get(int id)
         {
             ObtenerUsuarios();
-            String[] spliter = usuarios[id].Split(';');
+            if(id < usuarios.Length) {
+                if (!usuarios[id].Equals("")) {
+                    String[] spliter = usuarios[id].Split(';');
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("Usuario: " + spliter[0] + "\nNombre: " + spliter[1] + "\n");
+                    return sb.ToString();
+                } 
+            }
+            return "Usuario Inexistente.";
+        }
+
+        [HttpGet]
+        public string Get()
+        {
+            ObtenerUsuarios();
             StringBuilder sb = new StringBuilder();
-            sb.Append("Usuario: " + spliter[0] + "\nNombre: " + spliter[1] + "\n");
+            sb.Append("Información de todos los usuarios registrados: \n");
+            for (int i = 0; i < usuarios.Length && !usuarios[i].Equals(""); i++)
+            {
+                String[] spliter = usuarios[i].Split(';');
+                sb.Append("Usuario: " + spliter[0] + "\n");
+            }     
             return sb.ToString();
         }
 

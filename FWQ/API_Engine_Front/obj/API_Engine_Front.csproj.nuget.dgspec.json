@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\API_Engine_Front\\API_Engine_Front.csproj": {}
+    "C:\\Users\\rjuar\\source\\repos\\ramonjuarez7\\FWQ\\FWQ\\API_Engine_Front\\API_Engine_Front.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\API_Engine_Front\\API_Engine_Front.csproj": {
+    "C:\\Users\\rjuar\\source\\repos\\ramonjuarez7\\FWQ\\FWQ\\API_Engine_Front\\API_Engine_Front.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\API_Engine_Front\\API_Engine_Front.csproj",
+        "projectUniqueName": "C:\\Users\\rjuar\\source\\repos\\ramonjuarez7\\FWQ\\FWQ\\API_Engine_Front\\API_Engine_Front.csproj",
         "projectName": "API_Engine_Front",
-        "projectPath": "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\API_Engine_Front\\API_Engine_Front.csproj",
+        "projectPath": "C:\\Users\\rjuar\\source\\repos\\ramonjuarez7\\FWQ\\FWQ\\API_Engine_Front\\API_Engine_Front.csproj",
         "packagesPath": "C:\\Users\\rjuar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\API_Engine_Front\\obj\\",
+        "outputPath": "C:\\Users\\rjuar\\source\\repos\\ramonjuarez7\\FWQ\\FWQ\\API_Engine_Front\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -47,6 +47,10 @@
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.11.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             }
           },
           "imports": [

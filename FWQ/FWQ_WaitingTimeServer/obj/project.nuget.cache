@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "loBTziCVeMZeE53lSoXsTY6wO/x9gDP+x22sut/22c4sjl7VsiBruTMyjl6UlAMixwExIBCXgSlssUziCPkx/g==",
+  "dgSpecHash": "iQ5rXa64eLbPBshz0AnhtMddCqrEEBGkIkA3Pp8LK5bnQpmqe4QWEOEnaUT1jhkdd85PJ9WYaT9Buo/uK/LxwQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_WaitingTimeServer\\FWQ_WaitingTimeServer.csproj",
+  "projectFilePath": "C:\\Users\\rjuar\\source\\repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_WaitingTimeServer\\FWQ_WaitingTimeServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rjuar\\.nuget\\packages\\confluent.kafka\\1.8.2\\confluent.kafka.1.8.2.nupkg.sha512",
     "C:\\Users\\rjuar\\.nuget\\packages\\librdkafka.redist\\1.8.2\\librdkafka.redist.1.8.2.nupkg.sha512",
+    "C:\\Users\\rjuar\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\rjuar\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512"
   ],
   "logs": []

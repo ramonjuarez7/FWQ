@@ -39,5 +39,10 @@ namespace FWQ_Visitor
             Visitor visitor = new Visitor(ipBroker, puertoBroker, ipRegistry, puertoRegistry, llamador, mensaje);      
             label7.Text = visitor.StartRConexion();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Regístrate";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Regístrate</h1>
+    <div>
+        <form id="form1" method="post" action="api/Registro" enctype="application/x-www-form-urlencoded">
+            <div>
+                <label for="Usuario">Usuario</label>
+            </div>
+            <div>
+                <input name="Usuario" type="text" />
+            </div>
+            <div>
+                <label for="Nombre">Nombre</label>
+            </div>
+            <div>
+                <input name="Nombre" type="text" />
+            </div>
+            <div>
+                <div>
+                    <label for="Passwd">Contraseña</label>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <input name="Passwd" type="password" />
+                </div>
+            </div>
+            <p></p>
+            <div>
+                <div>
+                    <input type="submit" value="Enviar" />
+                </div>
+            </div>      
+        </form>
+    </div>
+</div>

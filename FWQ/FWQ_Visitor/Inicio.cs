@@ -47,5 +47,10 @@ namespace FWQ_Visitor
             IniciarSesion CambioF = new IniciarSesion(ipBroker, puertoBroker, ipRegistry, puertoRegistry);
             CambioF.Show();
         }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

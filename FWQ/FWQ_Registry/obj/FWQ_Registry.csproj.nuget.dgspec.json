@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_Registry\\FWQ_Registry.csproj": {}
+    "C:\\Users\\rjuar\\source\\repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_Registry\\FWQ_Registry.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_Registry\\FWQ_Registry.csproj": {
+    "C:\\Users\\rjuar\\source\\repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_Registry\\FWQ_Registry.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_Registry\\FWQ_Registry.csproj",
+        "projectUniqueName": "C:\\Users\\rjuar\\source\\repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_Registry\\FWQ_Registry.csproj",
         "projectName": "FWQ_Registry",
-        "projectPath": "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_Registry\\FWQ_Registry.csproj",
+        "projectPath": "C:\\Users\\rjuar\\source\\repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_Registry\\FWQ_Registry.csproj",
         "packagesPath": "C:\\Users\\rjuar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_Registry\\obj\\",
+        "outputPath": "C:\\Users\\rjuar\\source\\repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_Registry\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -47,6 +47,10 @@
             "Confluent.Kafka": {
               "target": "Package",
               "version": "[1.8.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             }
           },
           "imports": [

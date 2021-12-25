@@ -37,6 +37,7 @@ namespace FWQ_Visitor
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -99,7 +100,7 @@ namespace FWQ_Visitor
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(154, 257);
+            this.button1.Location = new System.Drawing.Point(64, 259);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(131, 49);
             this.button1.TabIndex = 6;
@@ -117,11 +118,23 @@ namespace FWQ_Visitor
             this.label4.Text = " ";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // Form1
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button2.Location = new System.Drawing.Point(246, 259);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(127, 49);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Crear Perfil API";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // CrearPerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 366);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
@@ -130,7 +143,7 @@ namespace FWQ_Visitor
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Name = "Form1";
+            this.Name = "CrearPerfil";
             this.Text = "FWQ - Crear Perfil";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -147,6 +160,7 @@ namespace FWQ_Visitor
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button2;
     }
 }
 

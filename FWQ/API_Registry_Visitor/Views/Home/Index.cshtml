@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Inicia sesión</h1>
+    <div>
+        <form id="form1" method="get" action="api/Sesion" enctype="application/x-www-form-urlencoded">
+            <div>
+                <label for="Usuario">Usuario</label>
+            </div>
+            <div>
+                <input name="Usuario" type="text" />
+            </div>
+            <div>
+                <label for="Passwd">Contraseña</label>
+            </div>
+            <div>
+                <input name="Passwd" type="password" />
+            </div>
+            <p></p>
+            <div>
+                <input type="submit" value="Enviar" />
+            </div>
+        </form>
+    </div>
+</div>

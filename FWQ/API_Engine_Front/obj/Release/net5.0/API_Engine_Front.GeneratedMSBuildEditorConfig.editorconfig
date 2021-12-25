@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = API_Engine_Front
-build_property.ProjectDir = C:\Users\rjuar\Source\Repos\ramonjuarez7\FWQ\FWQ\API_Engine_Front\
+build_property.ProjectDir = C:\Users\rjuar\source\repos\ramonjuarez7\FWQ\FWQ\API_Engine_Front\

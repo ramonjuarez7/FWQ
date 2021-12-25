@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "cMy/utN7dmPvH2UYKkdwP8pG1voTvUQ7som7wmHiJoMpZxGBo0Zi6yAoXFNUJ9E9OSW30nmINHe5bf6x3PRvMw==",
+  "dgSpecHash": "ZktbftYB/KT4+Bmq9qphD1l9DwJ9+hwWTzTdFvuQVCaH1qmhtXtYp31NyOvGl2AQn+mU/5w6ZyOIR3ZpiPXqIw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\API_Engine_Front\\API_Engine_Front.csproj",
+  "projectFilePath": "C:\\Users\\rjuar\\source\\repos\\ramonjuarez7\\FWQ\\FWQ\\API_Engine_Front\\API_Engine.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\rjuar\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.11.1\\microsoft.visualstudio.azure.containers.tools.targets.1.11.1.nupkg.sha512"
+    "C:\\Users\\rjuar\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.11.1\\microsoft.visualstudio.azure.containers.tools.targets.1.11.1.nupkg.sha512",
+    "C:\\Users\\rjuar\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }
