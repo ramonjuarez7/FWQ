@@ -35,6 +35,9 @@ namespace FWQ_Engine
                 Engine engine = new Engine(ipBroker, puertoBroker, maxVisitantes, ipTS, puertoTS);
                 Thread th1 = new Thread(engine.SolicitudAccesoKafka);
                 th1.Start();
+                
+                Thread th2 = new(engine.conectarOpenWeatherAsync);
+                th2.Start();
 
                 while (true)
                 {
