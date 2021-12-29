@@ -392,6 +392,135 @@ namespace FWQ_Engine
                 Console.WriteLine(e.ToString());
             }
         }
+        
+        //Conecta con el servidor de OpenWeather
+        public void conectarOpenWeatherAsync()
+        {
+
+            //OTRA FORMA DE GHACER EL CÓDIGO
+            /* string url = @"http://https://api.openweathermap.org/data/2.5/weather?id=2521978&appid=573dad31e053e6563583f75c34a695b9";
+             WebRequest webRequest = WebRequest.Create(url);
+             HttpWebResponse httpwebResponse = null;
+             httpwebResponse = (HttpWebResponse)webRequest.GetResponse();
+
+             string result = string.Empty;
+
+             using (Stream stream = httpwebResponse.GetResponseStream())
+             {
+                 StreamReader streamReader = new StreamReader(stream);
+                 result = streamReader.ReadToEnd();
+                 streamReader.Close();
+             }
+            */
+
+
+            // creo un array donde almaceno diferentes ciudades
+            
+            string[] ciudades = {"Alicante", "Barcelona", "Helsinki", "Paris", "Milan", "Murcia", "Cáceres" };
+
+            var seed = Environment.TickCount;
+            var random = new Random(seed);
+
+            //con una variable aleatoria, saco la posicion de 4 ciudades y las almaceno
+            int value = random.Next(0, 8);
+            int c1 = value;
+            int c2 = value;
+            int c3 = value;
+            int c4 = value;
+            
+
+            //almaceno la url con los datos de una ciudad
+            string url1 = "http://api.openweathermap.org/data/2.5/weather?q=" + ciudades[c1] + "&appid=bc76a4f700dcec5a1977869940c499cb";
+            string url2 = "http://api.openweathermap.org/data/2.5/weather?q=" + ciudades[c2] + "&appid=8a0609a61e66b01bb4d3f0d2e27da57a";
+            string url3 = "http://api://.openweathermap.org/data/2.5/weather?q=" + ciudades[c2] + "&appid=1f5660acf5f16819b8294daf04e569d6";
+            string url4 = "http://api://.openweathermap.org/data/2.5/weather?q=" + ciudades[c2] + "&appid=0d142b606d67e84346cbd2627b783d72";
+                
+            //deserializo los archivos json de cada url
+            var response = new WebClient().DownloadString(url1);
+            dynamic posts = JsonConvert.DeserializeObject(response);
+
+            var response2 = new WebClient().DownloadString(url2);
+            dynamic posts2 = JsonConvert.DeserializeObject(response2);
+
+            var response3 = new WebClient().DownloadString(url3);
+            dynamic posts3 = JsonConvert.DeserializeObject(response3);
+
+            var response4 = new WebClient().DownloadString(url4);
+            dynamic posts4 = JsonConvert.DeserializeObject(response4);
+
+
+            //recorro cada url obteniendo los datos de la temperatura
+            foreach (var post in posts)
+            {
+                    Console.WriteLine("Nombre ciudad: " + post.name ); //=> Nombre ciudad Alicante
+                    
+                    //si la temperatura no es la correcta se cierra esa zona del parque
+                    if (float.Parse(post.main.temp, CultureInfo.InvariantCulture.NumberFormat)  < 293.15 )
+                    {
+                        Console.WriteLine("Temperatura menor a la permitida, se cierra esta zona del parque " + ciudades[c1]);
+                    }
+                    else
+                    {
+                        if (float.Parse(post.main.temp, CultureInfo.InvariantCulture.NumberFormat) > 303.15)
+                        {
+                            Console.WriteLine("Temperatura mayor a la permitida, se cierra esta zona del parque " + ciudades[c1]);
+                        }
+                    }
+            }
+
+            foreach (var post2 in posts2)
+            {
+                Console.WriteLine("Nombre ciudad: " + post2.name); //=> Nombre ciudad Alicante
+
+                if (float.Parse(post2.main.temp, CultureInfo.InvariantCulture.NumberFormat) < 293.15)
+                {
+                    Console.WriteLine("Temperatura menor a la permitida, se cierra esta zona del parque " + ciudades[c2]);
+                }
+                else
+                {
+                    if (float.Parse(post2.main.temp, CultureInfo.InvariantCulture.NumberFormat) > 303.15)
+                    {
+                        Console.WriteLine("Temperatura mayor a la permitida, se cierra esta zona del parque " + ciudades[c2]);
+                    }
+                }
+            }
+
+            foreach (var post3 in posts3)
+            {
+                Console.WriteLine("Nombre ciudad: " + post3.name); //=> Nombre ciudad Alicante
+
+                if (float.Parse(post3.main.temp, CultureInfo.InvariantCulture.NumberFormat) < 293.15)
+                {
+                    Console.WriteLine("Temperatura menor a la permitida, se cierra esta zona del parque " + ciudades[c3]);
+                }
+                else
+                {
+                    if (float.Parse(post3.main.temp, CultureInfo.InvariantCulture.NumberFormat) > 303.15)
+                    {
+                        Console.WriteLine("Temperatura mayor a la permitida, se cierra esta zona del parque " + ciudades[c3]);
+                    }
+                }
+            }
+
+            foreach (var post4 in posts)
+            {
+                Console.WriteLine("Nombre ciudad: " + post4.name); //=> Nombre ciudad Alicante
+
+                if (float.Parse(post4.main.temp, CultureInfo.InvariantCulture.NumberFormat) < 293.15)
+                {
+                    Console.WriteLine("Temperatura menor a la permitida, se cierra esta zona del parque " + ciudades[c4]);
+                }
+                else
+                {
+                    if (float.Parse(post4.main.temp, CultureInfo.InvariantCulture.NumberFormat) > 303.15)
+                    {
+                        Console.WriteLine("Temperatura mayor a la permitida, se cierra esta zona del parque de " + ciudades[c4]);
+                    }
+                }
+            }
+
+            
+        }
 
     }
 }
