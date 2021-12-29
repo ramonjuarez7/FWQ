@@ -21,4 +21,16 @@ namespace FWQ_Visitor
         // Client socket.
         public Socket workSocket = null;
     }
+
+    public class PerfilPersonalDto
+    {
+
+        public string Usuario { get; set; }
+        public string Nombre { get; set; }
+        public string Password { get; set; }
+        public string NuevoUsuario { get; set; }
+        public string NuevoNombre { get; set; }
+        public string NuevoPassword { get; set; }
+
+    }
 }

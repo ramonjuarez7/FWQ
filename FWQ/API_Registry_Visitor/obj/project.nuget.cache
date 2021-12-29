@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "WpyIaeRa9xg5U5gd9Uai158FoT0RjwVB7VssgkdggVjRBzhWW53oNxM/xy7Az0TyNXX4R6lmmzlsZhBEb2LXjA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rjuar\\source\\repos\\ramonjuarez7\\FWQ\\FWQ\\API_Registry_Visitor\\API_Registry.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rjuar\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.11.1\\microsoft.visualstudio.azure.containers.tools.targets.1.11.1.nupkg.sha512",
+    "C:\\Users\\rjuar\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

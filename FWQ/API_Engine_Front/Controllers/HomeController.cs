@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Net;
+using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -19,7 +21,7 @@ namespace API_Engine_Front.Controllers
         }
 
         public IActionResult Index()
-        {
+        { 
             return View();
         }
 
@@ -33,5 +35,7 @@ namespace API_Engine_Front.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
     }
 }

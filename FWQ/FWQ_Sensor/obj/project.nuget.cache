@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "0TDSltFCpkLJCe7T/JPiyKj0pFVxu/COm40bsEv1+5EJZNwo8RS0nww3cpFwfsD1thCc1QgXpk4A8ZFOpxqRkA==",
+  "dgSpecHash": "8k5VfVoO2N5e3c4OysGlQZrlM4DuZz5GIQu8gFswSic20tSLL0739thkOpIvLYCaoGT2w7fTyLAmcd9z2vSs3Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rjuar\\Source\\Repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_Sensor\\FWQ_Sensor.csproj",
+  "projectFilePath": "C:\\Users\\rjuar\\source\\repos\\ramonjuarez7\\FWQ\\FWQ\\FWQ_Sensor\\FWQ_Sensor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rjuar\\.nuget\\packages\\confluent.kafka\\1.8.2\\confluent.kafka.1.8.2.nupkg.sha512",
     "C:\\Users\\rjuar\\.nuget\\packages\\librdkafka.redist\\1.8.2\\librdkafka.redist.1.8.2.nupkg.sha512",
+    "C:\\Users\\rjuar\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\rjuar\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512"
   ],
   "logs": []
